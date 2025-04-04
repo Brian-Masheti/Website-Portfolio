@@ -29,13 +29,13 @@ Welcome to my portfolio website! I'm Brian Masheti, a data analyst and aspiring 
 
 ## Setup Instructions
 
-<<<<<<< HEAD
 1. **Clone or Download**:
    - Clone via Git:
-   -  
+     
      ```bash
      git clone https://github.com/Brian-Masheti/Website-Portfolio.git
      ```
+     
    - Or download the ZIP file and extract it.
      
 =======
@@ -69,7 +69,6 @@ Welcome to my portfolio website! I'm Brian Masheti, a data analyst and aspiring 
 
 ```
 brian-portfolio/
-<<<<<<< HEAD
 ├── index.html              # Main HTML file
 ├── Styles/                 # CSS folder
 │   └── styles.css          # Styling file
