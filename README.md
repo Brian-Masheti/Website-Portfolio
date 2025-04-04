@@ -1,6 +1,6 @@
 # Brian Masheti Portfolio
 
-Welcome to my portfolio website! I'm Brian Masheti, a data analyst and aspiring software engineer (Full-stack MERN developer) passionate about using data to drive decisions and building innovative solutions. This site showcases my skills, projects, education, interests, and a way to contact me.
+Welcome to my portfolio website! I'm Brian Masheti, a data analyst and aspiring software engineer (Full-stack MERN developer) passionate about using data to drive decisions and build innovative solutions. This site showcases my skills, projects, education, interests, and a way to contact me.
 
 **Live Website:** [https://brian-masheti.github.io/Website-Portfolio/](https://brian-masheti.github.io/Website-Portfolio/)
 
@@ -31,16 +31,18 @@ Welcome to my portfolio website! I'm Brian Masheti, a data analyst and aspiring 
 
 <<<<<<< HEAD
 1. **Clone or Download**:
-   - Clone via Git:  
+   - Clone via Git:
+   -  
      ```bash
      git clone https://github.com/Brian-Masheti/Website-Portfolio.git
      ```
    - Or download the ZIP file and extract it.
+     
 =======
 1. **Clone or Download the Project**:
    - If using Git: `[git clone <repository-url>](https://github.com/Brian-Masheti/Website-Portfolio.git)` (once hosted on GitHub).
    - Alternatively, download the project files as a ZIP and extract them.
->>>>>>> f7f4db576c6cfa920517cc9954be8c98eaa469f3
+
 
 2. **Open the Project**:
    - Navigate to the project folder.
@@ -52,7 +54,7 @@ Welcome to my portfolio website! I'm Brian Masheti, a data analyst and aspiring 
      - Devicon: `<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/devicon@2.15.1/devicon.min.css">`
      - Material Symbols: `<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />`
      - Google Fonts: `<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">`
-   - No additional installations needed (pure HTML/CSS).
+   - No additional installations are needed (pure HTML/CSS).
 
 ## Deployment
 
@@ -95,7 +97,6 @@ brian-portfolio/
 │   └── logo1.png       # Portfolio logo
 
 └── README.md           # Project documentation
->>>>>>> f7f4db576c6cfa920517cc9954be8c98eaa469f3
 
 **Note**: The CV (BrianMashetiResume.pdf) is hosted on Google Drive.
 
@@ -103,7 +104,7 @@ brian-portfolio/
 
 - **Navigation**: Use the fixed navbar to access sections (Home, About Me, etc.).
 - **Download CV**: Click "Download CV" in Home or Footer to get my resume.
-- **Social Media**: Click icons (LinkedIn, GitHub, X, Facebook) in Home or Footer to visit my profiles.
+- **Social Media**: Click icons (LinkedIn, GitHub, X, Facebook) in the Home or Footer to visit my profiles.
 - **Contact**: Use the Contact section form to send a message via Formspree.
 
 ## Screenshots
@@ -120,7 +121,7 @@ brian-portfolio/
 =======
   **PowerBI Sales Dashboard**:
   ![Sales Dashboard]([https://ibb.co/d4bRpMNB](https://ibb.co/ych69GMR))
->>>>>>> f7f4db576c6cfa920517cc9954be8c98eaa469f3
+
 
 ### Education & Certification Section
 ![Education Section](Images/education.png)
@@ -139,10 +140,6 @@ brian-portfolio/
 - **GitHub**: Brian-Masheti
 - **X**: @brian_masheti12
 - **Facebook**: Brian Masheti
-
-## License
-
-This project is licensed under the MIT License. See the file for details.
 
 ## Acknowledgments
 
