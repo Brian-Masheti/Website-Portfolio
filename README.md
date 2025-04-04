@@ -84,7 +84,7 @@ Here are some screenshots of my portfolio website:
   ![Home Section](https://ibb.co/VWkNdvqN)
 
   **PowerBI Sales Dashboard**:
-  ![Sales Dashboard](https://ibb.co/d4bRpMNB)
+  ![Sales Dashboard]([https://ibb.co/d4bRpMNB](https://ibb.co/ych69GMR))
 
 - **Contact Section**:
   ![Contact Section](https://ibb.co/XdF9Qsq)
