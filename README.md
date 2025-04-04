@@ -1,101 +1,130 @@
 # Brian Masheti Portfolio
 
-Welcome to my personal portfolio website! I am Brian Masheti, a data analyst and software engineer passionate about leveraging data to drive decision-making and building innovative solutions. This website showcases my skills, projects, education, interests, and provides a way to contact me.
+Welcome to my portfolio website! I'm Brian Masheti, a data analyst and aspiring software engineer (Full-stack MERN developer) passionate about using data to drive decisions and building innovative solutions. This site showcases my skills, projects, education, interests, and a way to contact me.
+
+**Live Website:** [https://brian-masheti.github.io/Website-Portfolio/](https://brian-masheti.github.io/Website-Portfolio/)
 
 ## Features
-- **Responsive Design**: Fully responsive layout that works on desktop, tablet, and mobile devices.
-- **Navigation**: Easy navigation with sections for Home, About Me, Programming Languages, Education, Interests, Projects, and Contact.
-- **Contact Form**: A functional contact form using Formspree to send messages directly to my email.
-- **Download CV**: Active "Download CV" buttons in the Home and Footer sections, linking to my resume hosted on Google Drive.
-- **Social Media Links**: Clickable links to my LinkedIn, GitHub, X, and Facebook profiles in both Home and Footer sections.
-- **Styling**: Modern design with a starry night background, gradient footer, and animated navbar.
-- **Back to Top**: A "Back to Top" button in the footer for easy navigation.
+
+- **Responsive Design**: Works seamlessly on desktop, tablet, and mobile.
+- **Navigation**: Sections include Home, About Me, Programming Languages, Education, Interests, Projects, and Contact.
+- **Contact Form**: Functional form via Formspree to send messages to my email.
+- **Download CV**: Buttons in Home and Footer link to my resume on Google Drive.
+- **Social Media Links**: Links to LinkedIn, GitHub, X, and Facebook in Home and Footer.
+- **Styling**: Starry night background, gradient footer, and animated navbar with mobile hamburger menu.
+- **Back to Top**: Footer button for easy navigation to the top.
+- **Animations**: Typing effect in Home and rotating border around the profile image.
 
 ## Technologies Used
-- **HTML5**: For the structure of the website.
-- **CSS3**: For styling, including animations, gradients, and responsive design.
+
+- **HTML5**: Website structure.
+- **CSS3**: Styling, animations, gradients, and responsive design.
 - **External Libraries**:
-  - [Boxicons](https://boxicons.com/) for social media icons in the footer.
-  - [Devicon](https://devicon.dev/) for social media icons in the home section.
-  - [Material Symbols](https://fonts.google.com/icons) for icons in the contact section.
-- **Formspree**: For handling the contact form submissions.
-- **Google Drive**: For hosting the CV file (`BrianMashetiResume.pdf`).
+  - [Boxicons](https://boxicons.com/) for footer social media icons.
+  - [Devicon](https://devicon.dev/) for Home social media icons.
+  - [Material Symbols](https://fonts.google.com/icons) for Contact section icons.
+  - [Google Fonts](https://fonts.google.com/) for Poppins font.
+- **Formspree**: Handles contact form submissions.
+- **Google Drive**: Hosts the CV file (`BrianMashetiResume.pdf`).
 
 ## Setup Instructions
-To run this project locally on your machine, follow these steps:
 
-1. **Clone or Download the Project**:
-   - If using Git: `git clone <repository-url>` (once hosted on GitHub).
-   - Alternatively, download the project files as a ZIP and extract them.
+1. **Clone or Download**:
+   - Clone via Git:  
+     ```bash
+     git clone https://github.com/Brian-Masheti/Website-Portfolio.git
+     ```
+   - Or download the ZIP file and extract it.
 
 2. **Open the Project**:
    - Navigate to the project folder.
-   - Open `index.html` in a web browser (e.g., Chrome, Firefox) to view the site locally.
+   - Open index.html in a browser (e.g., Chrome, Firefox).
 
 3. **Dependencies**:
-   - Ensure an internet connection to load external CDNs:
+   - Requires an internet connection to load CDNs:
      - Boxicons: `<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">`
      - Devicon: `<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/devicon@2.15.1/devicon.min.css">`
      - Material Symbols: `<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />`
-   - No additional installations are required since the site uses pure HTML and CSS.
+     - Google Fonts: `<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">`
+   - No additional installations needed (pure HTML/CSS).
 
 ## Deployment
-The website is currently hosted on [InfinityFree](https://infinityfree.com/) at the following URL:
-- **Live URL**: `brianmasheti.infinityfreeapp.com` (replace with your actual subdomain once set up).
 
-### Hosting Steps
-1. **InfinityFree Setup**:
-   - Signed up for a free account on InfinityFree.
-   - Created a subdomain (e.g., `brianmasheti.infinityfreeapp.com`).
-   - Uploaded all project files to the `htdocs` folder using the InfinityFree File Manager.
-2. **CV Hosting**:
-   - The CV (`BrianMashetiResume.pdf`) is hosted on Google Drive with a direct download link: `https://drive.google.com/uc?export=download&id=1gSstBraFfMeUE0T-n1bEab-cgyhtT5vK`.
-
-### Future Deployment Plans
-- Plan to learn and migrate the site to **GitHub Pages** for a more reliable hosting solution with a custom subdomain (e.g., `brianmasheti.github.io`).
+- **Live URL**: [https://brian-masheti.github.io/Website-Portfolio/](https://brian-masheti.github.io/Website-Portfolio/)
+- **Hosting on GitHub Pages**:
+  1. Pushed the project to a public GitHub repository (Brian-Masheti/Website-Portfolio).
+  2. Enabled GitHub Pages in the repository settings, using the main branch.
+  3. The site is now live at the provided URL.
+- **CV Hosting**: The CV (BrianMashetiResume.pdf) is on Google Drive: Download CV.
 
 ## File Structure
 
+```
 brian-portfolio/
-├── index.html          # Main HTML file
-├── styles.css          # CSS file for styling
-├── Images/             # Folder for images
-│   └── logo1.png       # Portfolio logo
-└── README.md           # Project documentation
+├── index.html              # Main HTML file
+├── Styles/                 # CSS folder
+│   └── styles.css          # Styling file
+├── Images/                 # Images folder
+│   ├── logo1.png           # Portfolio logo
+│   ├── background.jpeg     # Starry night background
+│   ├── profile-pic.png     # Home section profile picture
+│   ├── journey-pic.jpg     # About Me section image
+│   ├── home.png            # Home section screenshot
+│   ├── dashboard.png       # PowerBI dashboard screenshot
+│   ├── education.png       # Education section screenshot
+│   ├── contact.png         # Contact section screenshot
+│   ├── mobile.png          # Mobile view screenshot
+│   └── footer.png          # Footer screenshot
+└── README.md               # Documentation
+```
 
-**Note**: The CV file (`BrianMashetiResume.pdf`) is hosted externally on Google Drive.
+**Note**: The CV (BrianMashetiResume.pdf) is hosted on Google Drive.
 
 ## Usage
-- **Navigation**: Use the fixed navbar to jump to sections like Home, About Me, Programming Languages, Education, Interests, Projects, and Contact.
-- **Download CV**: Click the "Download CV" buttons in the Home or Footer sections to download my resume.
-- **Social Media**: Click the social media icons (LinkedIn, GitHub, Twitter, Facebook) in the Home or Footer sections to visit my profiles.
-- **Contact**: Use the contact form in the Contact section to send me a message via Formspree.
+
+- **Navigation**: Use the fixed navbar to access sections (Home, About Me, etc.).
+- **Download CV**: Click "Download CV" in Home or Footer to get my resume.
+- **Social Media**: Click icons (LinkedIn, GitHub, X, Facebook) in Home or Footer to visit my profiles.
+- **Contact**: Use the Contact section form to send a message via Formspree.
 
 ## Screenshots
 
-Here are some screenshots of my portfolio website:
+### Home Section
+![Home Section](Images/home.png)
 
-- **Home Section**:
-  ![Home Section](https://ibb.co/VWkNdvqN)
+### Contact Section
+![Contact Section](Images/contact.png)
 
-  **PowerBI Sales Dashboard**:
-  ![Sales Dashboard](https://ibb.co/d4bRpMNB)
+### PowerBI Sales Dashboard
+![PowerBI Dashboard](Images/dashboard.png)
 
-- **Contact Section**:
-  ![Contact Section](https://ibb.co/XdF9Qsq)
+### Education & Certification Section
+![Education Section](Images/education.png)
 
-- **Footer**:
-  ![Footer](https://ibb.co/gLC6rc8S)
+### Mobile View
+![Mobile View](Images/mobile.png)
+
+### Footer
+![Footer](Images/footer.png)
 
 ## Contact Information
+
 - **Email**: savabrian92@gmail.com
 - **Phone**: +254 741 754 002
-- **LinkedIn**: [Brian Masheti](https://www.linkedin.com/in/brian-masheti/)
-- **GitHub**: [Brian-Masheti](https://github.com/Brian-Masheti)
-- **Twitter**: [@brian_masheti12](https://x.com/brian_masheti12)
-- **Facebook**: [Profile](https://www.facebook.com/profile.php?id=61554448543753)
+- **LinkedIn**: Brian Masheti
+- **GitHub**: Brian-Masheti
+- **X**: @brian_masheti12
+- **Facebook**: Brian Masheti
 
+## License
 
----
+This project is licensed under the MIT License. See the file for details.
+
+## Acknowledgments
+
+- **Formspree**: For form submission handling.
+- **GitHub Pages**: For hosting the website.
+- **Google Fonts**: For the Poppins font.
+- **Boxicons, Devicon, Material Symbols**: For icons used in the site.
 
 **Built with ❤️ by Brian Masheti**

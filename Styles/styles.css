@@ -32,7 +32,7 @@ a {
     left: 0;
     top: 0;
     width: 100%;
-    padding: 25px 9%;
+    padding: 15px 5%; /* Reduced padding for mobile */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -55,8 +55,32 @@ a {
 
 /* Style the logo in the navigation bar */
 .navbar .logo {
-    font-size: 30px;
+    font-size: 24px; /* Slightly smaller for mobile */
     font-weight: 700;
+}
+
+/* Hide the checkbox input */
+.nav-toggle {
+    display: none;
+}
+
+/* Style the hamburger menu label (three lines) */
+.nav-toggle-label {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 101;
+}
+
+.nav-toggle-label span {
+    background: #fff;
+    height: 3px;
+    width: 100%;
+    border-radius: 2px;
+    transition: all 0.3s ease;
 }
 
 /* Style the unordered list in the navigation bar to display items horizontally */
@@ -68,14 +92,14 @@ a {
 /* Style each list item in the navigation bar */
 .navbar ul li {
     list-style: none;
-    margin-left: 35px;
+    margin-left: 25px; /* Reduced margin for better spacing */
 }
 
 /* Style the links inside the navigation bar with a smooth transition effect */
 .navbar ul li a {
-    font-size: 20px;
+    font-size: 18px; /* Slightly smaller for mobile */
     font-weight: 500;
-    color: #fff; /* White text to match footer */
+    color: #fff;
     text-decoration: none;
     transition: color 0.5s ease;
 }
@@ -83,13 +107,12 @@ a {
 /* Change the color of navigation links on hover or when active */
 .navbar ul li:hover a,
 .navbar ul li.active a {
-    color: #f08e3d; /* Keep existing orange hover/active color, or change to #007bff if preferred */
+    color: #f08e3d;
 }
 
 /* CSS-only approximation for scroll effect (limited without JavaScript) */
-/* This will apply the gradient when the navbar is "targeted" (e.g., via anchor), but it’s not scroll-based */
 .navbar:target {
-    background: linear-gradient(135deg, #1a252f, #2a3a4f); /* Footer gradient */
+    background: linear-gradient(135deg, #1a252f, #2a3a4f);
 }
 
 /* Ensure the logo image is visible with the new background */
@@ -101,9 +124,9 @@ a {
 .home {
     display: flex;
     align-items: center;
-    gap: 50px;
+    gap: 30px; /* Reduced gap for mobile */
     height: 100vh;
-    padding: 60px 9% 0;
+    padding: 80px 5% 0; /* Adjusted padding for mobile */
     color: #fff;
     visibility: hidden;
     opacity: 0;
@@ -113,14 +136,14 @@ a {
 
 /* Style the main heading in the home section */
 .home-info h1 {
-    font-size: 55px;
+    font-size: 40px; /* Reduced for mobile */
 }
 
 /* Style the subheading in the home section */
 .home-info h2 {
     display: inline-block;
-    font-size: 32px;
-    margin-top: -10px;  
+    font-size: 24px; /* Reduced for mobile */
+    margin-top: -5px;
 }
 
 /* Apply an animated text effect to the span inside the subheading */
@@ -167,25 +190,27 @@ a {
 
 /* Style the paragraph in the home section */
 .home-info p {
-    font-size: 16px;
-    margin: 10px 0 25px;
+    font-size: 14px; /* Reduced for mobile */
+    margin: 8px 0 20px;
 }
 
 /* Style the container for the button and social icons in the home section */
 .home-info .btn-sci {
     display: flex;
     align-items: center;
+    flex-wrap: wrap; /* Allow wrapping on mobile */
+    gap: 10px;
 }
 
 /* Style the button with a glowing effect and transition */
 .btn {
     display: inline-block;
-    padding: 10px 30px;
+    padding: 8px 25px; /* Slightly smaller padding */
     background: #f08e3d;
     border: 2px solid #f08e3d;
     border-radius: 40px;
     box-shadow: 0 0 10px #f08e3d;
-    font-size: 16px;
+    font-size: 14px; /* Reduced for mobile */
     color: #1f242d;
     font-weight: 600;
     transition: .5s;
@@ -200,18 +225,18 @@ a {
 
 /* Add spacing to the social icons container */
 .home-info .btn-sci .sci {
-    margin: 20px;
+    margin: 15px;
 }
 
-/* Style the social media icons with a circular border and transition, compatible with Devicon */
+/* Style the social media icons with a circular border and transition */
 .home-info .btn-sci .sci a {
     display: inline-flex;
-    padding: 8px;
+    padding: 6px;
     border: 2px solid #f08e3d;
     border-radius: 50%;
-    font-size: 20px;
+    font-size: 18px; /* Reduced for mobile */
     color: #f08e3d;
-    margin: 0 8px;
+    margin: 0 6px;
     transition: .5s;
     align-items: center;
     justify-content: center;
@@ -219,7 +244,7 @@ a {
 
 /* Adjust the size of Devicon icons to fit better in the circular border */
 .home-info .btn-sci .sci a i {
-    font-size: 20px;
+    font-size: 18px;
 }
 
 /* Change the social media icons' appearance on hover */
@@ -232,10 +257,10 @@ a {
 /* Style the container for the image in the home section */
 .home-img .img-box {
     position: relative;
-    width: 32vw;
-    height: 32vw;
-    max-width: 400px;
-    max-height: 400px;
+    width: 28vw; /* Slightly smaller for mobile */
+    height: 28vw;
+    max-width: 300px; /* Reduced max size */
+    max-height: 300px;
     border-radius: 50%;
     padding: 5px;
     display: flex;
@@ -287,7 +312,7 @@ a {
 /* Style the image inside the container */
 .home-img .img-box .img-item img {
     position: absolute;
-    top: 30px;
+    top: 25px; /* Adjusted for smaller size */
     display: block;
     width: 85%;
     object-fit: cover;
@@ -296,17 +321,17 @@ a {
 
 /* Style the About Me section */
 .about-me {
-    padding: 60px 9%;
+    padding: 50px 5%; /* Reduced padding for mobile */
     color: #fff;
-    min-height: 100vh;
+    min-height: auto; /* Allow content to dictate height on mobile */
 }
 
 /* Style the heading in the About Me section */
 .about-me h2 {
-    font-size: 36px;
+    font-size: 28px; /* Reduced for mobile */
     font-weight: 700;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     position: relative;
 }
 
@@ -314,38 +339,36 @@ a {
 .about-me h2::after {
     content: '';
     position: absolute;
-    bottom: -10px;
+    bottom: -8px;
     left: 50%;
     transform: translateX(-50%);
-    width: 50px;
-    height: 4px;
+    width: 40px; /* Slightly smaller */
+    height: 3px;
     background: #007bff;
 }
 
 /* Style the introductory paragraph in the About Me section */
 .about-me .intro {
-    font-size: 18px;
+    font-size: 16px; /* Reduced for mobile */
     text-align: center;
-    margin-bottom: 40px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-bottom: 30px;
+    max-width: 100%; /* Full width on mobile */
     color: #ddd;
 }
 
 /* Style the grid container for the skill cards */
 .about-me .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    margin-bottom: 60px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Smaller min width for mobile */
+    gap: 15px;
+    margin-bottom: 40px;
 }
 
 /* Style each skill card */
 .about-me .skill-card {
     background: rgba(0, 0, 0, 0.7);
-    border-radius: 10px;
-    padding: 20px;
+    border-radius: 8px;
+    padding: 15px;
     text-align: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease;
@@ -359,29 +382,29 @@ a {
 /* Style the Material Icons in the skill cards */
 .about-me .skill-card span.material-icons,
 .about-me .skill-card span.material-symbols-outlined {
-    font-size: 40px;
-    color: #007bff; /* Blue to match the heading underline */
-    margin-bottom: 15px;
-    display: block; /* Ensure the icon is centered */
+    font-size: 35px; /* Slightly smaller */
+    color: #007bff;
+    margin-bottom: 10px;
+    display: block;
 }
 
 /* Style the heading in each skill card */
 .about-me .skill-card h3 {
-    font-size: 20px;
+    font-size: 18px; /* Reduced for mobile */
     font-weight: 600;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     color: #fff;
 }
 
 /* Style the paragraph in each skill card */
 .about-me .skill-card p {
-    font-size: 14px;
+    font-size: 13px; /* Reduced for mobile */
     color: #ccc;
 }
 
 /* Style the Technical Skills subsection */
 .technical-skills {
-    margin-bottom: 60px;
+    margin-bottom: 40px;
 }
 
 /* Style the skill list in the technical skills section */
@@ -394,67 +417,67 @@ a {
 /* Style each skill item in the list */
 .technical-skills .skill-list li {
     position: relative;
-    font-size: 16px;
+    font-size: 14px; /* Reduced for mobile */
     color: #ccc;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     text-align: center;
 }
 
 /* Style the journey section with flexbox layout */
 .about-me .journey {
     display: flex;
-    gap: 40px;
+    gap: 30px;
     align-items: center;
     flex-wrap: wrap;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
 }
 
 /* Style the journey image container */
 .about-me .journey-img {
     flex: 1;
-    min-width: 300px;
+    min-width: 250px; /* Reduced for mobile */
 }
 
 /* Style the journey image */
 .about-me .journey-img img {
     width: 100%;
-    border-radius: 10px;
+    border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 /* Style the journey text container */
 .about-me .journey-text {
     flex: 2;
-    min-width: 300px;
+    min-width: 250px;
     background: rgba(0, 0, 0, 0.7);
-    padding: 20px;
-    border-radius: 10px;
+    padding: 15px;
+    border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 /* Style the heading in the journey section */
 .about-me .journey-text h3 {
-    font-size: 28px;
+    font-size: 24px; /* Reduced for mobile */
     font-weight: 600;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     color: #fff;
 }
 
 /* Style the paragraphs in the journey section */
 .about-me .journey-text p {
-    font-size: 16px;
+    font-size: 14px; /* Reduced for mobile */
     color: #ccc;
-    margin-bottom: 15px;
-    line-height: 1.6;
+    margin-bottom: 10px;
+    line-height: 1.5;
 }
 
 /* Style the experience stats section */
 .experience-stats {
     display: flex;
-    gap: 20px;
+    gap: 15px;
     justify-content: center;
     flex-wrap: wrap;
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 /* Style each stat container */
@@ -463,8 +486,8 @@ a {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100px;
-    height: 100px;
+    width: 80px; /* Smaller for mobile */
+    height: 80px;
     background: #007bff;
     border-radius: 50%;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -472,24 +495,24 @@ a {
 
 /* Style the stat value */
 .experience-stats .stat-value {
-    font-size: 24px;
+    font-size: 20px; /* Reduced for mobile */
     font-weight: 600;
     color: #fff;
 }
 
 /* Style the stat label */
 .experience-stats .stat-label {
-    font-size: 12px;
+    font-size: 10px; /* Reduced for mobile */
     color: #fff;
     text-align: center;
-    margin-top: 5px;
+    margin-top: 3px;
 }
 
 /* Style the Programming Languages section */
 .programming-languages {
-    padding: 60px 9%;
+    padding: 50px 5%;
     color: #fff;
-    min-height: 100vh;
+    min-height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -497,10 +520,10 @@ a {
 
 /* Style the heading in the Programming Languages section */
 .programming-languages h2 {
-    font-size: 36px;
+    font-size: 28px;
     font-weight: 700;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     position: relative;
 }
 
@@ -508,27 +531,27 @@ a {
 .programming-languages h2::after {
     content: '';
     position: absolute;
-    bottom: -10px;
+    bottom: -8px;
     left: 50%;
     transform: translateX(-50%);
-    width: 50px;
-    height: 4px;
+    width: 40px;
+    height: 3px;
     background: #007bff;
 }
 
 /* Style the introductory paragraph in the Programming Languages section */
 .programming-languages .intro {
-    font-size: 18px;
+    font-size: 16px;
     text-align: center;
-    margin-bottom: 40px;
-    max-width: 800px;
+    margin-bottom: 30px;
+    max-width: 100%;
     color: #ddd;
 }
 
 /* Style the container for the languages list */
 .programming-languages .languages-list {
     display: flex;
-    gap: 20px;
+    gap: 15px;
     flex-wrap: wrap;
     justify-content: center;
 }
@@ -536,16 +559,16 @@ a {
 /* Style each language button */
 .programming-languages .language {
     background: rgba(0, 0, 0, 0.7);
-    padding: 10px 20px;
-    border-radius: 20px;
-    font-size: 16px;
+    padding: 8px 15px;
+    border-radius: 15px;
+    font-size: 14px; /* Reduced for mobile */
     font-weight: 500;
     color: #fff;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease;
     display: flex;
     align-items: center;
-    gap: 8px; /* Space between icon and text */
+    gap: 6px;
 }
 
 /* Add a hover effect to the language buttons */
@@ -555,23 +578,23 @@ a {
 
 /* Style the language icons */
 .programming-languages .language-icon {
-    font-size: 24px;
-    color: #f08e3d; /* Orange color to match other sections */
+    font-size: 20px; /* Reduced for mobile */
+    color: #f08e3d;
 }
 
 /* Style the Education & Certifications section */
 .education-certifications {
-    padding: 60px 9%;
+    padding: 50px 5%;
     color: #fff;
-    min-height: 100vh;
+    min-height: auto;
 }
 
 /* Style the heading in the Education & Certifications section */
 .education-certifications h2 {
-    font-size: 36px;
+    font-size: 28px;
     font-weight: 700;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     position: relative;
 }
 
@@ -579,52 +602,50 @@ a {
 .education-certifications h2::after {
     content: '';
     position: absolute;
-    bottom: -10px;
+    bottom: -8px;
     left: 50%;
     transform: translateX(-50%);
-    width: 50px;
-    height: 4px;
+    width: 40px;
+    height: 3px;
     background: #007bff;
 }
 
 /* Style the introductory paragraph in the Education & Certifications section */
 .education-certifications .intro {
-    font-size: 18px;
+    font-size: 16px;
     text-align: center;
-    margin-bottom: 40px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-bottom: 30px;
+    max-width: 100%;
     color: #ddd;
 }
 
 /* Style the main content container with flexbox layout */
 .education-certifications .education-content {
     display: flex;
-    gap: 40px;
+    gap: 30px;
     flex-wrap: wrap;
 }
 
 /* Style the left column (Academic Education and Current Learning) */
 .education-certifications .education-left {
     flex: 1;
-    min-width: 300px;
+    min-width: 100%; /* Full width on mobile */
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
 }
 
 /* Style the right column (Professional Certifications) */
 .education-certifications .education-right {
     flex: 1;
-    min-width: 300px;
+    min-width: 100%;
 }
 
 /* Style the education cards (Academic Education and Current Learning) */
 .education-certifications .education-card {
     background: rgba(0, 0, 0, 0.7);
-    padding: 20px;
-    border-radius: 10px;
+    padding: 15px;
+    border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease;
 }
@@ -638,69 +659,69 @@ a {
 .education-certifications .card-header {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 15px;
+    gap: 8px;
+    margin-bottom: 10px;
 }
 
 /* Style the Material Icons in the card header */
 .education-certifications .card-header .material-icons {
-    font-size: 28px;
+    font-size: 24px;
     color: #007bff;
 }
 
 /* Style the heading in the card header */
 .education-certifications .card-header h3 {
-    font-size: 24px;
+    font-size: 20px; /* Reduced for mobile */
     font-weight: 600;
     color: #fff;
 }
 
 /* Style the degree title */
 .education-certifications .education-card h4 {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
     color: #fff;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
 }
 
 /* Style the institution name */
 .education-certifications .education-card .institution {
-    font-size: 16px;
+    font-size: 14px;
     color: #ccc;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
 }
 
 /* Style the date */
 .education-certifications .education-card .date {
-    font-size: 14px;
+    font-size: 13px;
     color: #bbb;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 /* Style the description */
 .education-certifications .education-card .description {
-    font-size: 14px;
+    font-size: 13px;
     color: #ccc;
-    line-height: 1.6;
+    line-height: 1.5;
 }
 
 /* Style the certifications header (icon and heading) */
 .education-certifications .certifications-header {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
+    gap: 8px;
+    margin-bottom: 15px;
 }
 
 /* Style the Material Icons in the certifications header */
 .education-certifications .certifications-header .material-icons {
-    font-size: 28px;
+    font-size: 24px;
     color: #007bff;
 }
 
 /* Style the heading in the certifications header */
 .education-certifications .certifications-header h3 {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 600;
     color: #fff;
 }
@@ -709,20 +730,20 @@ a {
 .education-certifications .certifications-grid {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    margin-left: 20px; /* Slight indent to align with the heading */
+    gap: 15px;
+    margin-left: 0; /* Remove indent on mobile */
 }
 
 /* Style each certification card */
 .education-certifications .certification-card {
     background: rgba(0, 0, 0, 0.7);
-    padding: 20px;
-    border-radius: 10px;
+    padding: 15px;
+    border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease;
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
     width: 100%;
 }
 
@@ -733,8 +754,8 @@ a {
 
 /* Style the certification icon */
 .education-certifications .certification-icon {
-    font-size: 40px; /* Matches the size of other icons */
-    color: #28a745; /* Green color to contrast with blue icons */
+    font-size: 35px;
+    color: #28a745;
 }
 
 /* Style the certification text container */
@@ -744,30 +765,30 @@ a {
 
 /* Style the certification title */
 .education-certifications .certification-card h4 {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 500;
     color: #fff;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
 }
 
 /* Style the year */
 .education-certifications .certification-card .year {
-    font-size: 14px;
+    font-size: 13px;
     color: #bbb;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
 }
 
 /* Style the institution name in the certification card */
 .education-certifications .certification-card .institution {
-    font-size: 14px;
+    font-size: 13px;
     color: #ccc;
 }
 
 /* Style the Interests section */
 .interests {
-    padding: 60px 9%;
+    padding: 50px 5%;
     color: #fff;
-    min-height: 100vh;
+    min-height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -775,10 +796,10 @@ a {
 
 /* Style the heading in the Interests section */
 .interests h2 {
-    font-size: 36px;
+    font-size: 28px;
     font-weight: 700;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     position: relative;
 }
 
@@ -786,390 +807,7 @@ a {
 .interests h2::after {
     content: '';
     position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 50px;
-    height: 4px;
-    background: #007bff;
-}
-
-/* Style the introductory paragraph in the Interests section */
-.interests .intro {
-    font-size: 18px;
-    text-align: center;
-    margin-bottom: 40px;
-    max-width: 800px;
-    color: #ddd;
-}
-
-/* Style the interests grid */
-.interests .interests-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    width: 100%;
-    max-width: 1200px;
-}
-
-/* Style each interest card */
-.interests .interest-card {
-    background: rgba(0, 0, 0, 0.7);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    position: relative;
-}
-
-/* Style the interest icon */
-.interests .interest-icon {
-    font-size: 50px;
-    color: #f08e3d; /* Orange color for the emoji_objects icon */
-    margin-bottom: 15px;
-    display: block;
-}
-
-/* Style the interest title */
-.interests .interest-card h3 {
-    font-size: 20px;
-    font-weight: 600;
-    color: #fff;
-    margin-bottom: 10px;
-}
-
-/* Style the description (always visible) */
-.interests .interest-card .description {
-    font-size: 14px;
-    color: #ccc;
-    line-height: 1.6;
-}
-
-/* Style the Projects section */
-.projects {
-    padding: 60px 9%;
-    color: #fff;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Style the heading in the Projects section */
-.projects h2 {
-    font-size: 36px;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 20px;
-    position: relative;
-}
-
-/* Add a blue underline to the Projects heading */
-.projects h2::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 50px;
-    height: 4px;
-    background: #007bff;
-}
-
-/* Style the introductory paragraph in the Projects section */
-.projects .intro {
-    font-size: 18px;
-    text-align: center;
-    margin-bottom: 40px;
-    max-width: 800px;
-    color: #ddd;
-}
-
-/* Style the projects grid */
-.projects .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    width: 100%;
-    max-width: 1200px;
-}
-
-/* Style each project card */
-.projects .project-card {
-    background: rgba(0, 0, 0, 0.7);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    position: relative;
-}
-
-/* Style the project icon (for developer_mode_tv) */
-.projects .project-icon {
-    font-size: 50px;
-    color: #f03dba; /* Orange color for the developer_mode_tv icon */
-    margin-bottom: 15px;
-    display: block;
-}
-
-/* Style the RStudio project icon (for devicon-rstudio-plain) */
-.projects .project-icon-rstudio {
-    font-size: 50px;
-    color: rgb(0, 174, 255); /* Orange color to match other icons */
-    margin-bottom: 15px;
-    display: block;
-}
-
-/* Style the project title */
-.projects .project-card h3 {
-    font-size: 20px;
-    font-weight: 600;
-    color: #fff;
-    margin-bottom: 10px;
-}
-
-/* Style the description */
-.projects .project-card .description {
-    font-size: 14px;
-    color: #ccc;
-    line-height: 1.6;
-    margin-bottom: 15px;
-}
-
-/* Style the project link */
-.projects .project-card .project-link {
-    display: inline-block;
-    font-size: 14px;
-    color: #007bff;
-    text-decoration: none;
-    margin: 5px 0;
-    transition: color 0.3s ease;
-}
-
-/* Hover effect for the project link */
-.projects .project-card .project-link:hover {
-    color: #28a745; /* Green on hover to match other sections */
-}
-
-/* Style the Projects section */
-.projects {
-    padding: 60px 9%;
-    color: #fff;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Style the heading in the Projects section */
-.projects h2 {
-    font-size: 36px;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 20px;
-    position: relative;
-}
-
-/* Add a blue underline to the Projects heading */
-.projects h2::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 50px;
-    height: 4px;
-    background: #007bff;
-}
-
-/* Style the introductory paragraph in the Projects section */
-.projects .intro {
-    font-size: 18px;
-    text-align: center;
-    margin-bottom: 40px;
-    max-width: 800px;
-    color: #ddd;
-}
-
-/* Style the projects grid */
-.projects .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    width: 100%;
-    max-width: 1200px;
-}
-
-/* Style each project card */
-.projects .project-card {
-    background: rgba(0, 0, 0, 0.7);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    position: relative;
-}
-
-/* Style the project icon (for developer_mode_tv) */
-.projects .project-icon {
-    font-size: 50px;
-    color: #f08e3d; /* Orange color for the developer_mode_tv icon */
-    margin-bottom: 15px;
-    display: block;
-}
-
-/* Style the RStudio project icon (for devicon-rstudio-plain) */
-.projects .project-icon-rstudio {
-    font-size: 50px;
-    color: #32c6eb; /* Orange color to match other icons */
-    margin-bottom: 15px;
-    display: block;
-}
-
-/* Style the project title */
-.projects .project-card h3 {
-    font-size: 20px;
-    font-weight: 600;
-    color: #fff;
-    margin-bottom: 10px;
-}
-
-/* Style the description */
-.projects .project-card .description {
-    font-size: 14px;
-    color: #ccc;
-    line-height: 1.6;
-    margin-bottom: 15px;
-}
-
-/* Style the Projects section */
-.projects {
-    padding: 60px 9%;
-    color: #fff;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Style the heading in the Projects section */
-.projects h2 {
-    font-size: 36px;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 20px;
-    position: relative;
-}
-
-/* Add a blue underline to the Projects heading */
-.projects h2::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 50px;
-    height: 4px;
-    background: #007bff;
-}
-
-/* Style the introductory paragraph in the Projects section */
-.projects .intro {
-    font-size: 18px;
-    text-align: center;
-    margin-bottom: 40px;
-    max-width: 800px;
-    color: #ddd;
-}
-
-/* Style the projects grid */
-.projects .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    width: 100%;
-    max-width: 1200px;
-}
-
-/* Style each project card */
-.projects .project-card {
-    background: rgba(0, 0, 0, 0.7);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    position: relative;
-}
-
-/* Style the project icon (for developer_mode_tv) */
-.projects .project-icon {
-    font-size: 50px;
-    color: #f08e3d; /* Orange color for the developer_mode_tv icon */
-    margin-bottom: 15px;
-    display: block;
-}
-
-/* Style the RStudio project icon (for devicon-rstudio-plain) */
-.projects .project-icon-rstudio {
-    font-size: 50px;
-    color: #27c5e1; /* Orange color to match other icons */
-    margin-bottom: 15px;
-    display: block;
-}
-
-/* Style the project title */
-.projects .project-card h3 {
-    font-size: 20px;
-    font-weight: 600;
-    color: #fff;
-    margin-bottom: 10px;
-}
-
-/* Style the description */
-.projects .project-card .description {
-    font-size: 14px;
-    color: #ccc;
-    line-height: 1.6;
-    margin-bottom: 15px;
-}
-
-/* Style the project link */
-.projects .project-card .project-link {
-    display: inline-block;
-    font-size: 14px;
-    color: #007bff;
-    text-decoration: none;
-    margin: 5px 0;
-    transition: color 0.3s ease;
-}
-
-/* Hover effect for the project link */
-.projects .project-card .project-link:hover {
-    color: #28a745; /* Green on hover to match other sections */
-}
-
-/* Style the dashboard example subsection */
-.projects .dashboard-example {
-    margin-top: 50px;
-    text-align: center;
-    width: 100%;
-    max-width: 1200px;
-}
-
-/* Style the dashboard example heading */
-.projects .dashboard-example h3 {
-    font-size: 24px;
-    font-weight: 600;
-    color: #fff;
-    margin-bottom: 15px;
-    position: relative;
-}
-
-/* Add a blue underline to the dashboard example heading */
-.projects .dashboard-example h3::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
+    bottom: -8px;
     left: 50%;
     transform: translateX(-50%);
     width: 40px;
@@ -1177,12 +815,198 @@ a {
     background: #007bff;
 }
 
+/* Style the introductory paragraph in the Interests section */
+.interests .intro {
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 30px;
+    max-width: 100%;
+    color: #ddd;
+}
+
+/* Style the interests grid */
+.interests .interests-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Style each interest card */
+.interests .interest-card {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    position: relative;
+}
+
+/* Style the interest icon */
+.interests .interest-icon {
+    font-size: 40px;
+    color: #f08e3d;
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* Style the interest title */
+.interests .interest-card h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+/* Style the description (always visible) */
+.interests .interest-card .description {
+    font-size: 13px;
+    color: #ccc;
+    line-height: 1.5;
+}
+
+/* Style the Projects section */
+.projects {
+    padding: 50px 5%;
+    color: #fff;
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Style the heading in the Projects section */
+.projects h2 {
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+/* Add a blue underline to the Projects heading */
+.projects h2::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 3px;
+    background: #007bff;
+}
+
+/* Style the introductory paragraph in the Projects section */
+.projects .intro {
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 30px;
+    max-width: 100%;
+    color: #ddd;
+}
+
+/* Style the projects grid */
+.projects .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Style each project card */
+.projects .project-card {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    position: relative;
+}
+
+/* Style the project icon (for developer_mode_tv) */
+.projects .project-icon {
+    font-size: 40px;
+    color: #f08e3d;
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* Style the RStudio project icon (for devicon-rstudio-plain) */
+.projects .project-icon-rstudio {
+    font-size: 40px;
+    color: #32c6eb;
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* Style the project title */
+.projects .project-card h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+/* Style the description */
+.projects .project-card .description {
+    font-size: 13px;
+    color: #ccc;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+/* Style the project link */
+.projects .project-card .project-link {
+    display: inline-block;
+    font-size: 13px;
+    color: #007bff;
+    text-decoration: none;
+    margin: 4px 0;
+    transition: color 0.3s ease;
+}
+
+/* Hover effect for the project link */
+.projects .project-card .project-link:hover {
+    color: #28a745;
+}
+
+/* Style the dashboard example subsection */
+.projects .dashboard-example {
+    margin-top: 40px;
+    text-align: center;
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Style the dashboard example heading */
+.projects .dashboard-example h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+/* Add a blue underline to the dashboard example heading */
+.projects .dashboard-example h3::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 2px;
+    background: #007bff;
+}
+
 /* Style the dashboard intro paragraph */
 .projects .dashboard-example .dashboard-intro {
-    font-size: 16px;
+    font-size: 14px;
     color: #ddd;
-    margin-bottom: 20px;
-    max-width: 800px;
+    margin-bottom: 15px;
+    max-width: 100%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -1191,36 +1015,24 @@ a {
 .projects .dashboard-example .dashboard-images {
     display: flex;
     justify-content: center;
-    gap: 30px; /* Space between images */
-    flex-wrap: wrap; /* Allows wrapping if the screen is too narrow */
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
 /* Style each dashboard image */
 .projects .dashboard-example .dashboard-image {
     width: 100%;
-    max-width: 450px; /* Reduced max-width to fit three images side by side */
-    height: auto; /* Maintains aspect ratio */
-    border-radius: 10px;
+    max-width: 350px; /* Reduced for mobile */
+    height: auto;
+    border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-/* Responsive adjustments for smaller screens */
-@media (max-width: 768px) {
-    .projects .dashboard-example .dashboard-images {
-        flex-direction: column; /* Stack images vertically on mobile */
-        align-items: center;
-    }
-
-    .projects .dashboard-example .dashboard-image {
-        max-width: 100%; /* Ensures the image fits the screen width on mobile */
-    }
 }
 
 /* Style the Contact section */
 .contact {
-    padding: 60px 9%;
+    padding: 50px 5%;
     color: #fff;
-    min-height: 100vh;
+    min-height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1228,10 +1040,10 @@ a {
 
 /* Style the heading in the Contact section */
 .contact h2 {
-    font-size: 36px;
+    font-size: 28px;
     font-weight: 700;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     position: relative;
 }
 
@@ -1239,46 +1051,46 @@ a {
 .contact h2::after {
     content: '';
     position: absolute;
-    bottom: -10px;
+    bottom: -8px;
     left: 50%;
     transform: translateX(-50%);
-    width: 50px;
-    height: 4px;
+    width: 40px;
+    height: 3px;
     background: #007bff;
 }
 
 /* Style the introductory paragraph in the Contact section */
 .contact .intro {
-    font-size: 18px;
+    font-size: 16px;
     text-align: center;
-    margin-bottom: 40px;
-    max-width: 800px;
+    margin-bottom: 30px;
+    max-width: 100%;
     color: #ddd;
 }
 
 /* Style the container for form and details */
 .contact .contact-container {
     display: flex;
-    gap: 30px;
+    gap: 20px;
     width: 100%;
-    max-width: 1200px;
-    margin-bottom: 50px;
+    max-width: 100%;
+    margin-bottom: 40px;
 }
 
 /* Style the contact form */
 .contact .contact-form {
     flex: 1;
     background: rgba(0, 0, 0, 0.7);
-    padding: 30px;
-    border-radius: 10px;
+    padding: 20px;
+    border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 /* Style the form heading */
 .contact .contact-form h3 {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 600;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     color: #fff;
 }
 
@@ -1286,7 +1098,7 @@ a {
 .contact .contact-form form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
 }
 
 /* Style each form group */
@@ -1297,9 +1109,9 @@ a {
 
 /* Style form labels */
 .contact .contact-form label {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
     color: #ddd;
 }
 
@@ -1308,9 +1120,9 @@ a {
 .contact .contact-form textarea {
     background: rgba(255, 255, 255, 0.1);
     border: none;
-    border-radius: 5px;
-    padding: 10px;
-    font-size: 14px;
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 13px;
     color: #fff;
     outline: none;
     transition: background 0.3s ease;
@@ -1319,7 +1131,7 @@ a {
 /* Style textarea specifically */
 .contact .contact-form textarea {
     resize: vertical;
-    min-height: 100px;
+    min-height: 80px;
 }
 
 /* Hover/focus effect for inputs and textarea */
@@ -1334,13 +1146,13 @@ a {
 .contact .contact-form .send-btn {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     background: #007bff;
     color: #fff;
-    padding: 10px 20px;
+    padding: 8px 15px;
     border: none;
-    border-radius: 5px;
-    font-size: 16px;
+    border-radius: 4px;
+    font-size: 14px;
     font-weight: 500;
     cursor: pointer;
     transition: background 0.3s ease;
@@ -1348,15 +1160,15 @@ a {
 
 /* Hover effect for the send button */
 .contact .contact-form .send-btn:hover {
-    background: #28a745; /* Green on hover to match theme */
+    background: #28a745;
 }
 
 /* Style the form message */
 .contact .contact-form .form-message {
     display: none;
-    margin-top: 15px;
-    font-size: 16px;
-    color: #28a745; /* Green to indicate success */
+    margin-top: 10px;
+    font-size: 14px;
+    color: #28a745;
     text-align: center;
 }
 
@@ -1369,16 +1181,16 @@ a {
 .contact .contact-details {
     flex: 1;
     background: rgba(0, 0, 0, 0.7);
-    padding: 30px;
-    border-radius: 10px;
+    padding: 20px;
+    border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 /* Style the details heading */
 .contact .contact-details h3 {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 600;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     color: #fff;
 }
 
@@ -1386,42 +1198,42 @@ a {
 .contact .contact-details .detail-item {
     display: flex;
     align-items: center;
-    gap: 15px;
-    margin-bottom: 20px;
+    gap: 10px;
+    margin-bottom: 15px;
 }
 
 /* Style the detail icon (default) */
 .contact .contact-details .detail-icon {
-    font-size: 24px;
+    font-size: 20px;
 }
 
 /* Specific colors for each icon */
 .contact .contact-details .email-icon {
-    color: #007bff; /* Blue for email */
+    color: #007bff;
 }
 
 .contact .contact-details .phone-icon {
-    color: #ff0000; /* Red for phone */
+    color: #ff0000;
 }
 
 .contact .contact-details .whatsapp-icon {
-    color: #28a745; /* Green for WhatsApp */
+    color: #28a745;
 }
 
 .contact .contact-details .location-icon {
-    color: #ffeb3b; /* Yellow for location */
+    color: #ffeb3b;
 }
 
 /* Style the detail text */
 .contact .contact-details h4 {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 500;
     color: #fff;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
 }
 
 .contact .contact-details p {
-    font-size: 14px;
+    font-size: 13px;
     color: #ddd;
     margin: 0;
 }
@@ -1433,61 +1245,49 @@ a {
 }
 
 .contact .contact-details .email-link {
-    color: #007bff; /* Blue for email */
+    color: #007bff;
 }
 
 .contact .contact-details .whatsapp-link {
-    color: #28a745; /* Green for WhatsApp */
+    color: #28a745;
 }
 
 .contact .contact-details .contact-link:hover {
-    color: #fff; /* White on hover for contrast */
+    color: #fff;
 }
 
 /* Style the call to action */
 .contact .cta {
     background: #007bff;
-    padding: 30px;
-    border-radius: 10px;
+    padding: 20px;
+    border-radius: 8px;
     text-align: center;
     width: 100%;
-    max-width: 600px;
+    max-width: 100%;
 }
 
 /* Style the CTA heading */
 .contact .cta h3 {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 600;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     color: #fff;
 }
 
 /* Style the CTA paragraph */
 .contact .cta p {
-    font-size: 16px;
+    font-size: 14px;
     color: #ddd;
-    margin-bottom: 20px;
-}
-
-/* Responsive adjustments for smaller screens */
-@media (max-width: 768px) {
-    .contact .contact-container {
-        flex-direction: column;
-    }
-
-    .contact .contact-form,
-    .contact .contact-details {
-        width: 100%;
-    }
+    margin-bottom: 15px;
 }
 
 /* Footer Styles */
 .footer {
-    background: linear-gradient(135deg, #1a252f, #2a3a4f); /* Gradient to differentiate from main content */
+    background: linear-gradient(135deg, #1a252f, #2a3a4f);
     color: #fff;
-    padding: 40px 9%;
+    padding: 30px 5%;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    margin-top: 50px;
+    margin-top: 40px;
     width: 100%;
     box-sizing: border-box;
 }
@@ -1496,8 +1296,8 @@ a {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 30px;
-    max-width: 1200px;
+    gap: 20px;
+    max-width: 1200px; /* Added max-width for better desktop alignment */
     margin: 0 auto;
 }
 
@@ -1505,37 +1305,44 @@ a {
 .footer-middle,
 .footer-right {
     flex: 1;
-    min-width: 200px;
+    min-width: 250px; /* Ensure columns don't get too narrow on desktop */
+    text-align: left; /* Align text to the left for desktop */
 }
 
-.footer h3 {
-    font-size: 20px;
+.footer-left h3,
+.footer-middle h3,
+.footer-right h3 {
+    font-size: 18px;
     font-weight: 600;
-    margin-bottom: 15px;
-    color: #fff; /* White font for headings */
+    margin-bottom: 10px;
+    color: #fff;
     position: relative;
 }
 
-.footer h3::after {
+.footer-left h3::after,
+.footer-middle h3::after,
+.footer-right h3::after {
     content: '';
     position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 100%;
+    bottom: -4px;
+    left: 0; /* Align underline to the left for desktop */
+    width: 30px;
     height: 2px;
-    background: #007bff; /* Blue underline */
+    background: #007bff;
     transition: transform 0.3s ease;
     transform: scaleX(0);
 }
 
-.footer h3:hover::after {
-    transform: scaleX(1); /* Blue underline appears on hover */
+.footer-left h3:hover::after,
+.footer-middle h3:hover::after,
+.footer-right h3:hover::after {
+    transform: scaleX(1);
 }
 
 .footer p {
-    font-size: 14px;
+    font-size: 13px;
     color: #ddd;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .footer ul {
@@ -1544,32 +1351,33 @@ a {
 }
 
 .footer ul li {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .footer ul li a {
-    color: #fff; /* White font for navigation links */
+    color: #fff;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .footer ul li a:hover {
-    color: #007bff; /* Blue on hover */
+    color: #007bff;
 }
 
 .social-icons {
     display: flex;
-    gap: 10px;
+    gap: 8px;
+    justify-content: flex-start; /* Align icons to the left for desktop */
 }
 
 .social-icons a {
-    font-size: 20px;
-    color: #fff; /* White icons */
+    font-size: 18px;
+    color: #fff;
     transition: color 0.3s ease;
 }
 
 .social-icons a:hover {
-    color: #007bff; /* Blue on hover */
+    color: #007bff;
 }
 
 .cv-btn {
@@ -1577,72 +1385,241 @@ a {
     background: #007bff;
     color: #fff;
     border: none;
-    padding: 8px 16px;
-    border-radius: 5px;
-    font-size: 14px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 13px;
     text-decoration: none;
     transition: background 0.3s ease;
-    margin-top: 15px;
+    margin-top: 10px;
 }
 
 .cv-btn:hover {
-    background: #28a745; /* Green on hover */
+    background: #28a745;
 }
 
 .footer-bottom {
     display: flex;
-    justify-content: center; /* Center the copyright notice */
+    justify-content: space-between; /* Align copyright and back-to-top button on desktop */
     align-items: center;
-    margin-top: 20px;
-    padding-top: 20px;
+    margin-top: 15px;
+    padding-top: 15px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .footer-bottom p {
     margin: 0;
-    font-size: 12px;
-    color: #fff; /* White font for copyright */
+    font-size: 11px;
+    color: #fff;
 }
 
 .back-to-top {
     background: #007bff;
     color: #fff;
     border: none;
-    padding: 8px 12px;
+    padding: 6px 10px;
     border-radius: 50%;
-    font-size: 16px;
+    font-size: 14px;
     text-decoration: none;
     transition: background 0.3s ease;
-    margin-left: 15px; /* Space between copyright and button */
 }
 
 .back-to-top:hover {
-    background: #28a745; /* Green on hover */
+    background: #28a745;
 }
 
-/* Responsive adjustments for footer */
+/* Mobile Responsive Styles */
 @media (max-width: 768px) {
-    .footer-container {
+    /* Show the hamburger menu on mobile */
+    .nav-toggle-label {
+        display: flex;
+    }
+
+    /* Hide the navigation menu by default on mobile */
+    .navbar ul {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 70%;
+        height: 100vh;
+        background: #2e3c49;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: left 0.3s ease;
+        z-index: 100;
+    }
+
+    /* Show the menu when the checkbox is checked */
+    .nav-toggle:checked ~ ul {
+        left: 0;
+    }
+
+    /* Style the menu items on mobile */
+    .navbar ul li {
+        margin: 20px 0;
+    }
+
+    .navbar ul li a {
+        font-size: 20px;
+    }
+
+    /* Transform the hamburger icon into a cross when menu is open */
+    .nav-toggle:checked ~ .nav-toggle-label span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .nav-toggle:checked ~ .nav-toggle-label span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .nav-toggle:checked ~ .nav-toggle-label span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+    }
+
+    /* Stack the home section vertically on mobile */
+    .home {
         flex-direction: column;
         text-align: center;
+        padding-top: 100px; /* Extra padding to account for fixed navbar */
+        gap: 20px;
+    }
+
+    .home-info h1 {
+        font-size: 32px;
+    }
+
+    .home-info h2 {
+        font-size: 20px;
+    }
+
+    .home-info p {
+        font-size: 13px;
+    }
+
+    .home-img .img-box {
+        width: 50vw;
+        height: 50vw;
+        max-width: 250px;
+        max-height: 250px;
+    }
+
+    /* Stack journey section vertically */
+    .about-me .journey {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    /* Stack contact container vertically */
+    .contact .contact-container {
+        flex-direction: column;
+    }
+
+    .contact .contact-form,
+    .contact .contact-details {
+        width: 100%;
+    }
+
+    /* Stack dashboard images vertically */
+    .projects .dashboard-example .dashboard-images {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .projects .dashboard-example .dashboard-image {
+        max-width: 100%;
+    }
+
+    /* Footer adjustments for mobile */
+    .footer-container {
+        flex-direction: column;
+        text-align: center; /* Center align text for mobile */
+    }
+
+    .footer-left,
+    .footer-middle,
+    .footer-right {
+        min-width: 100%; /* Full width on mobile */
+        text-align: center; /* Center align text for mobile */
+    }
+
+    .footer-left h3::after,
+    .footer-middle h3::after,
+    .footer-right h3::after {
+        left: 50%; /* Center the underline for mobile */
+        transform: translateX(-50%);
     }
 
     .social-icons {
-        justify-content: center;
-        margin-top: 10px;
+        justify-content: center; /* Center icons for mobile */
+        margin-top: 8px;
     }
 
     .cv-btn {
-        margin: 15px auto 0;
+        margin: 10px auto 0;
         display: block;
     }
 
     .footer-bottom {
-        flex-direction: column;
-        gap: 10px;
+        flex-direction: column; /* Stack copyright and back-to-top button vertically */
+        gap: 8px;
     }
 
     .back-to-top {
-        margin: 10px 0 0;
+        margin: 8px 0 0;
+    }
+}
+
+/* For very small screens (e.g., below 480px) */
+@media (max-width: 480px) {
+    .home-info h1 {
+        font-size: 28px;
+    }
+
+    .home-info h2 {
+        font-size: 18px;
+    }
+
+    .home-info p {
+        font-size: 12px;
+    }
+
+    .btn {
+        padding: 6px 20px;
+        font-size: 13px;
+    }
+
+    .home-info .btn-sci .sci a {
+        padding: 5px;
+        font-size: 16px;
+    }
+
+    .home-info .btn-sci .sci a i {
+        font-size: 16px;
+    }
+
+    .about-me h2,
+    .programming-languages h2,
+    .education-certifications h2,
+    .interests h2,
+    .projects h2,
+    .contact h2 {
+        font-size: 24px;
+    }
+
+    .about-me .intro,
+    .programming-languages .intro,
+    .education-certifications .intro,
+    .interests .intro,
+    .projects .intro,
+    .contact .intro {
+        font-size: 14px;
+    }
+
+    .about-me .journey-text h3,
+    .contact .contact-form h3,
+    .contact .contact-details h3,
+    .projects .dashboard-example h3,
+    .contact .cta h3 {
+        font-size: 18px;
     }
 }
