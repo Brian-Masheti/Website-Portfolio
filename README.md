@@ -86,16 +86,6 @@ brian-portfolio/
 └── README.md               # Documentation
 ```
 
-├── index.html          # Main HTML file
-
-├── styles.css          # CSS file for styling
-
-├── Images/             # Folder for images
-
-│   └── logo1.png       # Portfolio logo
-
-└── README.md           # Project documentation
-
 **Note**: The CV (**_BrianMashetiResume.pdf_)** is hosted on Google Drive.
 
 ## Usage
@@ -111,7 +101,7 @@ brian-portfolio/
 ![Home Section](Images/home.png)
 
 ### Mobile View (Home)
-![Mobile View](Images/mobile.png)
+![Mobile View](Images/mobile.jpg)
 
 ### Contact Section
 ![Contact Section](Images/contact.png)
@@ -130,8 +120,7 @@ brian-portfolio/
 
 - **Email**: savabrian92@gmail.com
 - **Phone**: +254 741 754 002
-- **LinkedIn**: _https://www.linkedin.com/in/brian-masheti/_
-
+- **LinkedIn**: [https://linkedin.com/in/brian-masheti](https://linkedin.com/in/brian-masheti)
 ## Acknowledgments
 
 - **Formspree**: For form submission handling.
