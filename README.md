@@ -38,7 +38,6 @@ Welcome to my portfolio website! I'm Brian Masheti, a data analyst and aspiring 
      
    - Or download the ZIP file and extract it.
      
-=======
 1. **Clone or Download the Project**:
    - If using Git: `[git clone <repository-url>](https://github.com/Brian-Masheti/Website-Portfolio.git)` (once hosted on GitHub).
    - Alternatively, download the project files as a ZIP and extract them.
@@ -58,7 +57,7 @@ Welcome to my portfolio website! I'm Brian Masheti, a data analyst and aspiring 
 
 ## Deployment
 
-- **Live URL**: [https://brian-masheti.github.io/Website-Portfolio/](https://brian-masheti.github.io/Website-Portfolio/)
+- **Live URL**: [https://brian-masheti.github.io/Website-Portfolio/]
 - **Hosting on GitHub Pages**:
   1. Pushed the project to a public GitHub repository (Brian-Masheti/Website-Portfolio).
   2. Enabled GitHub Pages in the repository settings, using the main branch.
