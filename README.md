@@ -111,7 +111,7 @@ brian-portfolio/
 ![Home Section](Images/home.png)
 
 ### Mobile View (Home)
-![Mobile View](Images/mobile.png)
+![Mobile View](Images/mobile.jpg)
 
 ### Contact Section
 ![Contact Section](Images/contact.png)
