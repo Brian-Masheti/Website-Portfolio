@@ -57,11 +57,13 @@ The website is currently hosted on [InfinityFree](https://infinityfree.com/) at 
 ## File Structure
 
 brian-portfolio/
+
 ├── index.html          # Main HTML file
 
 ├── styles.css          # CSS file for styling
 
 ├── Images/             # Folder for images
+
 │   └── logo1.png       # Portfolio logo
 
 └── README.md           # Project documentation
