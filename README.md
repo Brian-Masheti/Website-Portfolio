@@ -86,7 +86,6 @@ brian-portfolio/
 │   └── footer.png          # Footer screenshot
 └── README.md               # Documentation
 ```
-=======
 
 ├── index.html          # Main HTML file
 
@@ -98,13 +97,13 @@ brian-portfolio/
 
 └── README.md           # Project documentation
 
-**Note**: The CV (BrianMashetiResume.pdf) is hosted on Google Drive.
+**Note**: The CV (**_BrianMashetiResume.pdf_)** is hosted on Google Drive.
 
 ## Usage
 
-- **Navigation**: Use the fixed navbar to access sections (Home, About Me, etc.).
+- **Navigation**: Use the fixed navbar to access sections (**Home, About Me**, etc.).
 - **Download CV**: Click "Download CV" in Home or Footer to get my resume.
-- **Social Media**: Click icons (LinkedIn, GitHub, X, Facebook) in the Home or Footer to visit my profiles.
+- **Social Media**: Click icons (**LinkedIn, GitHub, X, Facebook**) in the Home or Footer to visit my profiles.
 - **Contact**: Use the Contact section form to send a message via Formspree.
 
 ## Screenshots
@@ -112,22 +111,18 @@ brian-portfolio/
 ### Home Section
 ![Home Section](Images/home.png)
 
+### Mobile View (Home)
+![Mobile View](Images/mobile.png)
+
 ### Contact Section
 ![Contact Section](Images/contact.png)
 
-<<<<<<< HEAD
 ### PowerBI Sales Dashboard
 ![PowerBI Dashboard](Images/dashboard.png)
-=======
-  **PowerBI Sales Dashboard**:
-  ![Sales Dashboard]([https://ibb.co/d4bRpMNB](https://ibb.co/ych69GMR))
-
 
 ### Education & Certification Section
 ![Education Section](Images/education.png)
 
-### Mobile View
-![Mobile View](Images/mobile.png)
 
 ### Footer
 ![Footer](Images/footer.png)
@@ -148,4 +143,4 @@ brian-portfolio/
 - **Google Fonts**: For the Poppins font.
 - **Boxicons, Devicon, Material Symbols**: For icons used in the site.
 
-**Built with ❤️ by Brian Masheti**
+**🤗 🏛️ Built with ❤️😍 by Brian Masheti 🖥️**
