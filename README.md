@@ -130,10 +130,7 @@ brian-portfolio/
 
 - **Email**: savabrian92@gmail.com
 - **Phone**: +254 741 754 002
-- **LinkedIn**: Brian Masheti
-- **GitHub**: Brian-Masheti
-- **X**: @brian_masheti12
-- **Facebook**: Brian Masheti
+- **LinkedIn**: _https://www.linkedin.com/in/brian-masheti/_
 
 ## Acknowledgments
 
