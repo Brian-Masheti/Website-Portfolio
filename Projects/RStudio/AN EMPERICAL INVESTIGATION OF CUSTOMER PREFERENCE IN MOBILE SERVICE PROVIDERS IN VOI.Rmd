@@ -1,0 +1,689 @@
+---
+title: "AN EMPERICAL INVESTIGATION OF CUSTOMER PREFERENCE IN MOBILE SERVICE PROVIDERS IN VOI"
+author: 'Brian Masheti'
+date: "1/24/2022"
+output: pdf_document
+---
+
+
+```{r setup, include=FALSE, message=FALSE}
+# Load the required packages
+rm(list = ls())
+setwd("C:/Users/Admin/Desktop/Project")
+library(tidyverse)
+library(knitr)
+library(mice)
+library(foreign)
+library(nnet)
+library(reshape2)
+library(MASS)
+library(rpivotTable)
+library(gmodels)
+opts_chunk$set(echo = TRUE)
+
+```
+
+
+**Load in the data set**
+
+```{r}
+data_proj <- read.csv("data_projo.csv", header = TRUE, sep = ",")
+
+```
+
+
+**Data Cleaning**
+
+```{r}
+# Select the columns that will be used for the analysis
+data_proj %>% 
+  dplyr::select(Gender, Age, Primary_line, Rating, Duration_p.line, Satistifaction_p.line, 
+                pre_usage, Job_status, Monthly_income, cost_line, monthly_exp,
+                service_expectations,service_clarity, lte_type,connectivity_satisfaction,
+                signal_strength_problems, promotion_considered, rate_service, factors_influenced
+                ) -> data1
+
+```
+
+
+**Check for outliers in the continuous variables**
+
+```{r, warning=FALSE, message=FALSE}
+# Age
+ggplot(data1, aes(x = Age), color = Age) + 
+    geom_boxplot(outlier.colour = "black", outlier.shape = 16,
+                 outlier.size = 2, notch = F) + 
+  coord_flip() + # rotate the box plot
+  theme_dark()
+
+# Duration of using the primary line
+ggplot(data1, aes(x = Duration_p.line)) + 
+    geom_boxplot(outlier.colour = "black", outlier.shape = 16,
+                 outlier.size = 2, notch = F) + 
+  coord_flip() +  
+  theme_dark()
+
+# Cost of line
+ggplot(data1, aes(x = cost_line)) + 
+    geom_boxplot(outlier.colour = "black", outlier.shape = 16,
+                 outlier.size = 2, notch = F) + 
+  coord_flip() + 
+  theme_dark()
+
+```
+
+Notice that there is a person who recorded their age at 253. We have to recode it correctly. We assume that they wanted to record 25 years.
+
+We know that the maximum number of years a person can be using a Safaricom line in Kenya is 21 years. Therefore we replace those who quoted 50 and 52 years with the maximum number of years that Safaricom has been in the Kenyan market.
+
+The cost of line also has many outliers, we'll therefore have to check the cost by looking at the age of the respondents and the number of years they have been using the line to ascertain the true cost of the line.
+
+```{r}
+# replace 253 years with 25 years
+data1["Age"][data1["Age"] == 253] <- 25
+
+# replace 50 and 52 years with 21 years
+data1["Duration_p.line"][data1["Duration_p.line"] == 50] <- 21
+data1["Duration_p.line"][data1["Duration_p.line"] == 52] <- 21
+
+# cost of line
+data1["cost_line"][data1["cost_line"] == 3000] <- 30
+data1["cost_line"][data1["cost_line"] == 1800] <- 180
+data1["cost_line"][data1["cost_line"] == 5] <- 50
+
+
+# Recode misspelled words in the primary data column
+data1 %>% mutate(pri_line = recode(Primary_line,
+                                       "airtel" = "Airtel",
+                                       "Airtel/Safaricom" = "Airtel",
+                                       "safcom" = "Safaricom",
+                                       "Telcom" = "Telkom"
+                                       )) -> data2
+
+# Recode lte type correctly
+data2 %>% mutate(lte = case_when(
+  lte_type == "1" ~ 1,
+  lte_type == "2" ~ 2,
+  lte_type == "3" ~ 3,
+  lte_type == "4" ~ 4,
+  lte_type == "1 2" ~ 2,
+  lte_type == "1 2 3" ~ 3,
+  lte_type == "2 1" ~ 2,
+  lte_type == "2 3" ~ 3,
+  lte_type == "3" ~ 3,
+  lte_type == "2 3 1" ~ 3,
+  lte_type == "3 2" ~ 3,
+  lte_type == "3 4" ~ 4,
+  lte_type == "4 3" ~ 4
+)) -> data3
+
+# Recode pre_usage correctly
+data3 %>% mutate(usage_type = case_when(
+  pre_usage == "1" ~ 1,
+  pre_usage == "1 2" ~ 3,
+  pre_usage == "1 3" ~3,
+  pre_usage == "2" ~ 2,
+  pre_usage == "3" ~ 3,
+  pre_usage == "3 1" ~ 3,
+  pre_usage == " " ~ 3
+)) -> data4
+
+# Monthly income
+data4 %>% mutate(m_income = case_when(
+  Monthly_income == "" ~ "10000 - 30000",
+  Monthly_income == "__10_000" ~ "< 10000",
+  Monthly_income == "__50_000" ~ "> 50000",
+  Monthly_income == "10_000___30_000" ~ "10000 - 30000",
+  Monthly_income == "30_001___50_000" ~ "30000 - 50000"
+  )) -> data5
+
+
+```
+
+
+**Check for missing values**
+
+```{r}
+#Check NAs
+NA1 = sort(sapply(data5, function(x) 
+  { 
+  sum(is.na(x))
+  } ))
+
+NA1[which(NA1!=0)]
+
+```
+
+
+**Replace missing values**
+
+```{r, message = FALSE, warning=FALSE}
+# A visual representation of the missing values
+require(VIM)
+
+kable(md.pattern(data5))
+
+mice_plot <- aggr(data5, col = c("navyblue", "yellow"),
+                  numbers = T, 
+                  sortVars = T,
+                  labels = names(data5), 
+                  cex.axis = .7,
+                  gap = 5, 
+                  ylab = c("Missing data", "Pattern"))
+mice_plot
+```
+
+There are approximately 85% of values in the dataset with no missing values.There are approximately 14% missing values in duration of primary line, cost of line and job status.
+
+
+
+```{r, message=FALSE, warning=FALSE}
+# Impute missing values in duration and cost of primary line using the mice package
+imp <- mice(data5, m = 5, maxit = 10, seed = 500)
+
+# and then get the complete data
+data <- complete(imp, 3)
+
+```
+
+
+**convert categorical variables into factors**
+
+```{r}
+data$Gender = as.factor(data$Gender)
+data$pri_line = as.factor(data$pri_line)
+data$rate_service = as.factor(data$rate_service)
+data$Satistifaction_p.line = as.factor(data$Satistifaction_p.line)
+data$usage_type = as.factor(data$usage_type)
+data$Job_status = as.factor(data$Job_status)
+data$m_income = as.factor(data$m_income)
+data$monthly_exp = as.factor(data$monthly_exp)
+data$Rating = as.factor(data$Rating)
+data$service_expectations = as.factor(data$service_expectations)
+data2$service_clarity = as.factor(data$service_clarity)
+data$lte = as.factor(data$lte)
+data$connectivity_satisfaction = as.factor(data$connectivity_satisfaction)
+data$signal_strength_problems = as.factor(data$signal_strength_problems)
+data$promotion_considered = as.factor(data$promotion_considered)
+data$service_clarity = as.factor(data$service_clarity)
+data$factors_influenced = as.factor(data$factors_influenced)
+
+```
+
+**Add labels to factor variables**
+
+```{r, message=FALSE, warning=FALSE}
+# Gender
+data$Gender <- fct_recode(data$Gender,
+                          "Male" = "1",
+                          "Female" = "0"
+                          )
+
+# Satisfaction primary line
+data$Satistifaction_p.line <- fct_recode(data$Satistifaction_p.line,
+                                         "Yes" = "1",
+                                         "No" = "2" 
+                                         )
+
+# Job status
+data$Job_status <- fct_recode(data$Job_status,
+                              "Employed" = "1",
+                              "Unemployed" = "2",
+                              "Self-employed" = "3",
+                              "Student" = "4"
+                              )
+
+# Monthly expenditure
+data$monthly_exp <- fct_recode(data$monthly_exp,
+                               "> 3500" = "1",
+                               "1501 - 3500" = "2",
+                               "500 - 1500" = "3",
+                               "< 500" = "4"
+                               )
+# Service expectation
+data$service_expectations <- fct_recode(data$service_expectations,
+                                        "Yes" = "1",
+                                        "No" = "2"
+                                        )
+# Clarity
+data$service_clarity <- fct_recode(data$service_clarity,
+                                   "Excellent" = "1",
+                                   "Good" = "2",
+                                   "Poor" = "3"
+                                   )
+# Connectivity satisfaction
+data$connectivity_satisfaction <- fct_recode(data$connectivity_satisfaction,
+                                             "Satisafied" = "1",
+                                             "Not Satisfied" = "0"
+                                             )
+# Signal strength problems
+data$signal_strength_problems <- fct_recode(data$signal_strength_problems,
+                                            "Often" = "1",
+                                            "Rarely" = "0"
+                                            )
+
+
+# Promotions considered
+data$promotion_considered <- fct_recode(data$promotion_considered,
+                                        "Yes" = "1",
+                                        "No" = "2"
+                                        )
+
+# LTEs
+data$lte <- fct_recode(data$lte,
+                       "2G" = "1",
+                       "3G" = "2",
+                       "4G" = "3",
+                       "5G" = "4"
+                       )
+
+
+# Type of usage
+data$usage_type <- fct_recode(data$usage_type,
+                              "Personal" = "1",
+                              "Business" = "2",
+                              "Both" = "3"
+                              )
+
+# Rate the service
+data$rate_service <- fct_recode(data$rate_service,
+                                "Excellent" = "1",
+                                "Very Good" = "2",
+                                "Good" = "3",
+                                "Poor" = "4"
+                                )
+
+```
+
+
+###################################################################################################
+
+**Data Analysis and Descriptions**
+
+**1. Model formulation**
+
+```{r}
+# Select the clean variables to analyse the model
+
+data %>% 
+  dplyr::select(Gender, Age, Rating, Duration_p.line, Satistifaction_p.line, Job_status, cost_line,
+                monthly_exp, service_expectations, service_clarity, connectivity_satisfaction,
+                signal_strength_problems, promotion_considered, pri_line, lte, usage_type, 
+                m_income
+                ) -> df
+```
+
+
+```{r, warning=FALSE}
+# Use Safaricom line as the reference group
+df$pri_line <- relevel(df$pri_line, ref = "Safaricom")
+
+model <- multinom(pri_line ~ ., df)
+summary(model)
+
+```
+
+
+**Step Bootstrap to return the equation to return significant predictors for the response variable**
+
+
+```{r, message=FALSE, warning=FALSE}
+stepAIC(model, df, B = 10, 
+             alpha = .05, 
+             direction = "both",
+             k = 2,
+             verbose = F
+             )
+
+```
+
+
+```{r, warning=FALSE}
+# final model
+f_model <- multinom(formula = pri_line ~ Gender + Age + Rating + Duration_p.line + 
+                      Job_status + cost_line + service_expectations + service_clarity + 
+                      signal_strength_problems + promotion_considered + lte + usage_type, 
+                    data = df)
+summary(f_model)
+
+```
+
+
+
+
+```{r}
+# Extract the coefficients from the model
+kable(t(coef(f_model)))
+
+```
+
+
+**Inferences**
+
+Here you use Safaricom as the referent group and therefore, a model for Airtel relative to Safaricom, a model for Equitel relative to Safaricom and a model for Telkom relative to Safaricom are estimated. 
+
+**i) Airtel relative to Safaricom**
+
+**Intercept**
+
+This is the multinomial logit estimate for Airtel relative to Safaricom when the predictor variables in the model are evaluated at zero. The logit for someone preferring Airtel relative to Safaricom as the primary line is 4346.16 units lower.
+
+**Gender**
+
+Is the multinomial logit estimate for one unit increase in gender1 in reference to gender2 given other variables in the model are held constant. If Gender1 were to change by one unit, the multinomial log odds of preferring Airtel relative to Safaricom would be expected to increase by 0.82 units while holding all other variables constant.
+
+**Age**
+
+It is the logit estimate for one unit increase in age given other variables in the model are held constant. If age were to change by one unit, the multinomial log odds of preferring Airtel relative to Safaricom would be expected to increase by 0.046 units while holding all other variables constant.
+
+**Duration_p.line**
+
+It is the logit estimate for one unit increase in Duration_p.line given other variables in the model are held constant. If Duration_p.line were to change by one unit, the multinomial log odds of choosing Airtel relative to Safaricom would be expected to reduce by 0.23 units while holding all other variables constant.
+
+**cost_line**
+
+It is the logit estimate for one unit increase in cost_line given other variables in the model are held constant. If cost_line were to change by one unit, the multinomial log odds of choosing Airtel relative to Safaricom would be expected to reduce by 0.033 units while holding all other variables constant.
+
+**service_expectation**
+
+It is the logit estimate for one unit increase in service_expectation2 in reference to  service_expectation1 given other variables in the model are held constant. If service_expectation2 were to change by one unit, the multinomial log odds of choosing Airtel relative to Safaricom would be expected to reduce by 0.73 units while holding all other variables constant.
+
+**signal_strength_problems**
+
+It is the logit estimate for one unit increase in signal_strength_problems1 in reference to signal_strength_problems2 given other variables in the model are held constant. If signal_strength_problems1 were to change by one unit, the multinomial log odds of choosing Airtel relative to Safaricom would be expected to reduce by 0.21 units while holding all other variables constant.
+
+**promotions_considered**
+
+It is the logit estimate for one unit increase in promotion_considered2 in reference to promotion_considered1 given other variables in the model are held constant. If promotion_considered2 were to change by one unit, the multinomial log odds of choosing Airtel relative to Safaricom would be expected to reduce by 0.83 units while holding all other variables constant.
+
+**Usage_type**
+
+- It is the logit estimate for one unit increase in usage_type2 in reference to usage_type1 given other variables in the model are held constant. If usage_type2 were to change by one unit, the multinomial log odds of choosing Airtel relative to Safaricom would be expected to reduce by 0.86 units while holding all other variables constant.
+
+- It is the logit estimate for one unit increase in usage_type3 in reference to usage_type1 given other variables in the model are held constant. If usage_type3 were to change by one unit, the multinomial log odds of choosing Airtel relative to Safaricom would be expected to increase by 0.19 units while holding all other variables constant.
+
+
+**ii) Equitel relative to Safaricom**
+
+- The log odds of male relative to female is  271.45 units lower for being in Equitel  relative to Safaricom given other predictor variables  are held constant in the model.
+
+- The log odds of age is  23.44 unit higher for being in Equitel  relative to Safaricom given other predictor variables  are held constant in the model
+
+- The log odds of duration of primary line is 209.01 unit lower for being in Equitel  relative to Safaricom given other predictor variables  are held constant in the model
+
+- The log odds of unemployed relative to employed is 4333 unit lower for being in Equitel relative to Safaricom given other predictor variables are held constant in the model
+
+- The log odds of self-employed relative to employed is 1405 unit lower for being in Equitel relative to Safaricom given other predictor variables are held constant in the model
+
+- The log odds of student relative to employed is 1791 unit lower for being in Equitel relative to Safaricom given other predictor variables are held constant in the model
+
+- The log odds of good service clarity relative to excellent service clarity is  479.03 unit lower for being in Equitel  relative to Safaricom given other predictor variables  are held constant in the model
+
+- The log odds of poor service clarity  relative to excellent service clarity is  13222 unit higher for being in Equitel  relative to Safaricom given other predictor variables  are held constant in the model
+
+- The log odds of not considering promotion factors relative to considering promotion factors is  5339 unit higher for being in Equitel  relative to Safaricom given other predictor variables  are held constant in the model
+
+- The log odds of using primary line for business purpose  relative to personal purpose is 5010 unit higher for being in Equitel  relative to Safaricom given other predictor variables  are held constant in the model
+
+
+
+**iii) Telkom relative to Safaricom**
+
+- logit estimate for Telkom with relative to Safaricom when the predictor variables in the model are evaluated at zero, the odds ratio for preferring Telkom as the primary line to Safaricom decreases by 1709.7890887 units when other factors are held constant.
+
+- This is the multinomial logit estimate for a one unit increase in Telkom for primary line relative to Safaricom given the Age in the model. If a subject were to increase Telkom score by one unit, the multinomial log-odds of preferring Telkom to Safaricom would be expected to decrease by 0.0304153 unit while holding all other variables in the model constant.
+
+- One unit increase in Telkom for primary line relative to Safaricom given Duration primary line in the model. If a subject were to increase Telkom score by one unit, the multinomial log-odds of preferring Telkom to Safaricom would be expected to decrease by 0.3786426 unit while holding all other variables in the model constant. Unit increase in Telkom for primary line relative to Safaricom given cost line in the model. If a subject were to increase Telkom score by one unit, the multinomial log-odds of preferring Telkom to Safaricom would be expected to decrease 0.060957 while holding all other variables in the model constant.
+
+- This is the multinomial logit estimate for a one unit increase in Telkom for primary line relative to Safaricom given (Male, rating2, rating3, rating4, rating5, job status3, job_status3, service clarity3, signal_strength_problem1) relative to female, rating1, job status 1, services clarity1 and signal strength problem2 respectively in the model. If a subject were to increase Telkom score by one unit, the multinomial log-odds of preferring Telkom to Safaricom would be expected to increase by 1.9234980, 1716.7351990, 1717.3173726, 1717.3173726, 901.4321930, 1.8493602, 0.7134457, 1.7152015, 0.3806954 units respectively while holding all other variables in the model constant.
+
+- This is the multinomial logit estimate for a one unit increase in Telkom for primary line relative to Safaricom given (job_status2, service_expectation2, service_clarity2, promotion_consider2, lte2, lte3, lte4, usage_type2, usage_type3) relative to job_status1, service_expectation1, service_clarity1, promotion_considered1, lte1, usage_type1 respectively in the model. If a subject were to increase Telkom score by one unit, the multinomial log-odds of preferring Telkom to Safaricom would be expected to decrease by 0.5866658, 0.0931494, 1.3934022, 0.9253397,3.0634161, 4.3678355, 6585.6589836, 1.5313484, 0.5643019 units respectively while holding all other variables in the model constant.
+
+
+```{r, warning=FALSE}
+# Z scores
+z <- summary(f_model)$coefficients / summary(f_model)$standard.errors
+kable(t(z))
+
+```
+
+
+```{r, warning=FALSE}
+# p-values
+# two-tailed z test
+
+p <- (1 - pnorm(abs(z), 0, 1)) * 2
+kable(t(p))
+
+```
+
+
+```{r}
+# extract the coefficients from the model and exponentiate
+kable(t(exp(coef(f_model))))
+
+```
+
+
+```{r}
+head(pp <- fitted(f_model), 15)
+
+```
+
+**Check the model fit information**
+
+```{r, warning=FALSE, message=FALSE}
+# Coefficient of determination
+require(performance)
+r2_mcfadden(f_model)
+r2_nagelkerke(f_model)
+r2_coxsnell(f_model)
+
+
+```
+Pseudo R-Square = 0.699, this implies that the model explains approximately 70% of the total variations in the dependent variable (primary line) are explained by the predictor variables in the model.
+
+###################################################################################################
+
+**2. Frequency Distributions**
+
+
+
+**a) Highest number of respondents with respect to Gender**
+
+```{r}
+rpivotTable(data, rows = "pri_line",
+            width = "100%",
+            height = "400px")
+
+```
+
+**b) Distribution of Gender and age group with respect to primary line**
+
+```{r}
+# Categorize age the cost of the primary line
+data$age_grp <- cut(data$Age, breaks = c(15, 30, 45, 60, 75, 90))
+
+rpivotTable(data, rows = "pri_line", cols = c("Gender", "age_grp"),
+            width = "100%",
+            height = "400px")
+
+```
+
+
+**c) Distribution of Gender, age category against primary line**
+
+```{r, warning=FALSE, message=FALSE}
+# Group by age group and gender and primary line
+rpivotTable(data, rows = c("pri_line", "cost"), cols = c("Gender", "age_grp"), 
+            width = "100%",
+            height = "400px")
+
+```
+
+
+**d) Frequency distribution for primary line against monthly income and monthly expenditure**
+
+```{r, warning=FALSE}
+rpivotTable(data, rows = c("pri_line", "m_income"), cols = "monthly_exp", 
+            width = "100%",
+            height = "400px")
+
+
+```
+
+**Airtel** 
+
+- The majority of the respondents (30) earn between 10000-30000; 10 of the respondents have a monthly expenditure between Ksh. 500-1500 while 2 of the respondents use above Ksh. 3500.
+
+- 3 respondents earn above Ksh. 50000, only one of the respondents has a monthly expenditure between 500-1500 and 2 of the respondents have a monthly expenditure of above Ksh.3500.
+
+**Equitel**
+
+- Most of the respondents (3) earn between 10000-30000; 2 of them spend above Ksh. 3500 and only 1 spends between 500-1500.
+
+- The remaining monthly incomes had 1 respondent each.
+
+**Safaricom**
+
+- Majority of respondents (214) earn between 10000-30000; 94 of the respondent had a monthly expenditure of Ksh.500-1500 while 18 of the respondents spent above Ksh 3500
+
+- 13 respondents earning above Ksh.50000 ;with 5 of these respondents having a monthly expenditure of Ksh.1501-3500, and 2 spending Ksh.500-1500 and below Ksh.500 monthly.
+
+**Telkom**
+
+- 19 respondents were the majority here who earned Ksh.10000-30000 and 12 of these respondents spent below Ksh.500 monthly, 1 respondent of these spending  above Ksh.3500.
+
+- 3 respondents earned below Ksh.10000 where 2 respondents spent Ksh.500-1500 while the remaining respondent had a monthly expenditure of Ksh.1501-3500.
+
+- Generally, across the primary lines of our consideration, majority of the respondents spent between 500 - 1500 which accounted for 41.3% while the least spenders (above 3500) accounted for 10.1%
+
+**e) Frequency distribution table of primary line against age category and promotional strategies**
+
+```{r, warning=FALSE}
+rpivotTable(data, rows = "pri_line", cols = c("age_grp", "promotion_considered"), 
+            width = "100%",
+            height = "400px")
+
+
+```
+
+- 15 respondents (34.1%) from a total of 44 Airtel respondents, who were the majority came from the age of 17-30 considered promotional strategies when choosing their primary line and only 1 respondent was between the age of 65 - 75 and 75 -90 and accounted for 2.3% 
+
+- Out of the 6 Equitel respondents, 3 (50%) were between the age of 30 - 45 years and did not consider promotional strategies when choosing their primary line and 1 between the age of 30 - 45 years respondent who accounted for 16.7% and considered promotional strategies when choosing a primary line.
+
+- Out of 306 Safaricom respondents, 100 respondents between age 15-30 years chose Safaricom as their primary line basing on promotional strategies and accounted for 32.7%. 1 respondent came from the age between 65-75 years and considered promotional strategies when choosing their primary line.
+
+- 10 (45.5%) of the total respondent of Telkom line were between 15-30 considered promotional strategies when choosing their primary line. 1 respondent (4.5%) between the age of 30-45 and 1  respondent (4.5%) between 45-60 years did not consider promotional strategies.
+
+- Generally, 125 respondents (33.1%) were between 15-30 years who considered promotional strategies and 1 respondent (1.1%) was between age 75-90 who did not consider promotional strategies. Safaricom registered the highest number of respondents 306 (81%) and had 6 respondents (1.6%)
+
+**f) Service clarity rating with respect to gender and Primary line**
+
+```{r, message = FALSE, warning = FALSE}
+rpivotTable(data, rows = c("pri_line", "Gender"), cols = c("service_clarity", "Rating"), 
+            width = "50%",
+            height = "400px")
+
+```
+
+From the analysis,75% of the female Safaricom subscribers with excellent service clarity gave a rating of 1 while 25% of the Safaricom subscribers with excellent service clarity gave a rating of 1, 81% of the total respondent subscribed to safaricom.25%  and 12.5% of females and males respectively  subscribed to  Airtel services with good service clarity gave Airtel service a rating of 2 .50% 0f females and males subscribed to Telkom with poor services  clarity  gave the service provider a rating of 4. Finally, 25% of females subscribed to Equitel with excellent service clarity gave a rating of 2, 2% of the respondent subscribed to Equitel
+
+**g) Distribution of primary line in relation to job status and monthly expenditure**
+
+```{r, message = FALSE, warning = FALSE}
+rpivotTable(data, rows = c("pri_line", "Job_status"), cols = "monthly_exp", 
+            width = "100%",
+            height = "400px")
+
+```
+
+
+
+```{r, message = FALSE, warning = FALSE}
+rpivotTable(data, rows = c("pri_line", "Job_status"), cols = "m_income", 
+            width = "100%",
+            height = "400px")
+
+```
+
+**Relationship between primary line and perceived price fairness**
+
+We would like to test the hypothesis at 95% confidence interval:
+
+  - Ho: There is no relationship between primary line and cost of line
+    
+    against
+    
+  - Ha: There is a relationship between primary line and cost of line.
+  
+
+```{r}
+summary(aov(data$cost_line ~ data$pri_line))
+
+qf(.95, 3, 374)
+
+```
+
+**Decision and conclusion**
+
+Since the f-statistic = 3.1 x 10^-9 < f-tabulated = 2.63, we reject Ho and conclude that there is sufficient evidence to show that there is a relationship between primary line and the cost of line.
+
+**Chi-square**
+
+```{r}
+CrossTable(data$pri_line, data$Gender)
+
+```
+
+
+```{r}
+kable(CrossTable(data$pri_line, data$m_income))
+
+```
+
+
+```{r, warning=FALSE}
+chisq.test(data$pri_line, data$Gender)
+
+chisq.test(data$pri_line, data$Monthly_income)
+
+chisq.test(data$pri_line, data$Age)
+
+chisq.test(data$pri_line, data$Duration_p.line)
+
+chisq.test(data$pri_line, data$usage_type)
+
+```
+
+
+
+```{r}
+# write.csv(data, file = "def.csv")
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
