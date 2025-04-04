@@ -29,12 +29,18 @@ Welcome to my portfolio website! I'm Brian Masheti, a data analyst and aspiring 
 
 ## Setup Instructions
 
+<<<<<<< HEAD
 1. **Clone or Download**:
    - Clone via Git:  
      ```bash
      git clone https://github.com/Brian-Masheti/Website-Portfolio.git
      ```
    - Or download the ZIP file and extract it.
+=======
+1. **Clone or Download the Project**:
+   - If using Git: `[git clone <repository-url>](https://github.com/Brian-Masheti/Website-Portfolio.git)` (once hosted on GitHub).
+   - Alternatively, download the project files as a ZIP and extract them.
+>>>>>>> f7f4db576c6cfa920517cc9954be8c98eaa469f3
 
 2. **Open the Project**:
    - Navigate to the project folder.
@@ -61,6 +67,7 @@ Welcome to my portfolio website! I'm Brian Masheti, a data analyst and aspiring 
 
 ```
 brian-portfolio/
+<<<<<<< HEAD
 ├── index.html              # Main HTML file
 ├── Styles/                 # CSS folder
 │   └── styles.css          # Styling file
@@ -77,6 +84,18 @@ brian-portfolio/
 │   └── footer.png          # Footer screenshot
 └── README.md               # Documentation
 ```
+=======
+
+├── index.html          # Main HTML file
+
+├── styles.css          # CSS file for styling
+
+├── Images/             # Folder for images
+
+│   └── logo1.png       # Portfolio logo
+
+└── README.md           # Project documentation
+>>>>>>> f7f4db576c6cfa920517cc9954be8c98eaa469f3
 
 **Note**: The CV (BrianMashetiResume.pdf) is hosted on Google Drive.
 
@@ -95,8 +114,13 @@ brian-portfolio/
 ### Contact Section
 ![Contact Section](Images/contact.png)
 
+<<<<<<< HEAD
 ### PowerBI Sales Dashboard
 ![PowerBI Dashboard](Images/dashboard.png)
+=======
+  **PowerBI Sales Dashboard**:
+  ![Sales Dashboard]([https://ibb.co/d4bRpMNB](https://ibb.co/ych69GMR))
+>>>>>>> f7f4db576c6cfa920517cc9954be8c98eaa469f3
 
 ### Education & Certification Section
 ![Education Section](Images/education.png)

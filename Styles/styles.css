@@ -1561,6 +1561,7 @@ a {
 
     .footer-bottom {
         flex-direction: column; /* Stack copyright and back-to-top button vertically */
+        position: center;
         gap: 8px;
     }
 
