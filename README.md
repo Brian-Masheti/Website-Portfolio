@@ -25,7 +25,7 @@ Welcome to my personal portfolio website! I am Brian Masheti, a data analyst and
 To run this project locally on your machine, follow these steps:
 
 1. **Clone or Download the Project**:
-   - If using Git: `git clone <repository-url>` (once hosted on GitHub).
+   - If using Git: `[git clone <repository-url>](https://github.com/Brian-Masheti/Website-Portfolio.git)` (once hosted on GitHub).
    - Alternatively, download the project files as a ZIP and extract them.
 
 2. **Open the Project**:
@@ -58,9 +58,12 @@ The website is currently hosted on [InfinityFree](https://infinityfree.com/) at 
 
 brian-portfolio/
 ├── index.html          # Main HTML file
+
 ├── styles.css          # CSS file for styling
+
 ├── Images/             # Folder for images
 │   └── logo1.png       # Portfolio logo
+
 └── README.md           # Project documentation
 
 **Note**: The CV file (`BrianMashetiResume.pdf`) is hosted externally on Google Drive.
