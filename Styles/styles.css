@@ -1,7 +1,7 @@
-/* Import the Poppins font from Google Fonts with multiple weights for styling flexibility */
+/* Import the Poppins font from Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
-/* Reset default browser styles and apply the Poppins font globally */
+/* Reset default styles and apply Poppins font globally */
 * {
     margin: 0;
     padding: 0;
@@ -9,7 +9,7 @@
     font-family: 'Poppins', sans-serif;
 }
 
-/* Set the background image for the entire page (dark mode) */
+/* Set background for the body */
 body {
     background-image: url('Images/background.jpeg');
     background-size: cover;
@@ -17,7 +17,7 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     min-height: 100vh;
-    background-color: #1f242d; /* Fallback for background image */
+    background-color: #1f242d; /* Fallback color */
 }
 
 /* Style all anchor tags */
@@ -26,26 +26,25 @@ a {
     text-decoration: none;
 }
 
-/* Style the navigation bar, making it fixed at the top with animation */
+/* Navbar styles */
 .navbar {
     position: fixed;
     left: 0;
     top: 0;
     width: 100%;
-    padding: 15px 5%; /* Reduced padding for mobile */
+    padding: 15px 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 100;
-    background: #2e3c49; /* Initial dark background matching the page */
+    background: #2e3c49;
     visibility: hidden;
     opacity: 0;
     animation: show-content 1.5s linear forwards;
     animation-delay: 1.2s;
-    transition: background 0.5s ease; /* Smooth transition for background change */
+    transition: background 0.5s ease;
 }
 
-/* Define the animation for fading in content */
 @keyframes show-content {
     100% {
         visibility: visible;
@@ -53,18 +52,15 @@ a {
     }
 }
 
-/* Style the logo in the navigation bar */
 .navbar .logo {
-    font-size: 24px; /* Slightly smaller for mobile */
+    font-size: 24px;
     font-weight: 700;
 }
 
-/* Hide the checkbox input */
 .nav-toggle {
     display: none;
 }
 
-/* Style the hamburger menu label (three lines) */
 .nav-toggle-label {
     display: none;
     flex-direction: column;
@@ -83,50 +79,39 @@ a {
     transition: all 0.3s ease;
 }
 
-/* Style the unordered list in the navigation bar to display items horizontally */
 .navbar ul {
     display: flex;
     align-items: center;
 }
 
-/* Style each list item in the navigation bar */
 .navbar ul li {
     list-style: none;
-    margin-left: 25px; /* Reduced margin for better spacing */
+    margin-left: 25px;
 }
 
-/* Style the links inside the navigation bar with a smooth transition effect */
 .navbar ul li a {
-    font-size: 18px; /* Slightly smaller for mobile */
+    font-size: 18px;
     font-weight: 500;
     color: #fff;
-    text-decoration: none;
     transition: color 0.5s ease;
 }
 
-/* Change the color of navigation links on hover or when active */
 .navbar ul li:hover a,
 .navbar ul li.active a {
     color: #f08e3d;
 }
 
-/* CSS-only approximation for scroll effect (limited without JavaScript) */
-.navbar:target {
-    background: linear-gradient(135deg, #1a252f, #2a3a4f);
-}
-
-/* Ensure the logo image is visible with the new background */
 .navbar .logo img {
     vertical-align: middle;
 }
 
-/* Style the home section with flexbox layout and animation */
+/* Home section styles */
 .home {
     display: flex;
     align-items: center;
-    gap: 30px; /* Reduced gap for mobile */
+    gap: 30px;
     height: 100vh;
-    padding: 80px 5% 0; /* Adjusted padding for mobile */
+    padding: 80px 5% 0;
     color: #fff;
     visibility: hidden;
     opacity: 0;
@@ -134,19 +119,16 @@ a {
     animation-delay: 1.6s;
 }
 
-/* Style the main heading in the home section */
 .home-info h1 {
-    font-size: 40px; /* Reduced for mobile */
+    font-size: 40px;
 }
 
-/* Style the subheading in the home section */
 .home-info h2 {
     display: inline-block;
-    font-size: 24px; /* Reduced for mobile */
+    font-size: 24px;
     margin-top: -5px;
 }
 
-/* Apply an animated text effect to the span inside the subheading */
 .home-info h2 span {
     position: relative;
     display: inline-block;
@@ -156,15 +138,12 @@ a {
     animation-delay: calc(-4s * var(--i));
 }
 
-/* Define the animation for hiding and showing text in the subheading */
 @keyframes display-text {
-    25%,
-    100% {
+    25%, 100% {
         display: none;
     }
 }
 
-/* Create a typing effect for the text inside the subheading span */
 .home-info h2 span::before {
     content: attr(data-text);
     position: absolute;
@@ -176,65 +155,56 @@ a {
     animation: fill-text 4s linear infinite;
 }
 
-/* Define the animation for the typing effect */
 @keyframes fill-text {
-    10%,
-    100% {
+    10%, 100% {
         width: 0;
     }
-    70%,
-    90% {
+    70%, 90% {
         width: 100%;
     }
 }
 
-/* Style the paragraph in the home section */
 .home-info p {
-    font-size: 14px; /* Reduced for mobile */
+    font-size: 14px;
     margin: 8px 0 20px;
 }
 
-/* Style the container for the button and social icons in the home section */
 .home-info .btn-sci {
     display: flex;
     align-items: center;
-    flex-wrap: wrap; /* Allow wrapping on mobile */
+    flex-wrap: wrap;
     gap: 10px;
 }
 
-/* Style the button with a glowing effect and transition */
 .btn {
     display: inline-block;
-    padding: 8px 25px; /* Slightly smaller padding */
+    padding: 8px 25px;
     background: #f08e3d;
     border: 2px solid #f08e3d;
     border-radius: 40px;
     box-shadow: 0 0 10px #f08e3d;
-    font-size: 14px; /* Reduced for mobile */
+    font-size: 14px;
     color: #1f242d;
     font-weight: 600;
     transition: .5s;
-}  
+}
 
-/* Change the button's appearance on hover */
 .btn:hover {
     background: transparent;
     color: #f08e3d;
     box-shadow: none;
 }
 
-/* Add spacing to the social icons container */
 .home-info .btn-sci .sci {
     margin: 15px;
 }
 
-/* Style the social media icons with a circular border and transition */
 .home-info .btn-sci .sci a {
     display: inline-flex;
     padding: 6px;
     border: 2px solid #f08e3d;
     border-radius: 50%;
-    font-size: 18px; /* Reduced for mobile */
+    font-size: 18px;
     color: #f08e3d;
     margin: 0 6px;
     transition: .5s;
@@ -242,24 +212,21 @@ a {
     justify-content: center;
 }
 
-/* Adjust the size of Devicon icons to fit better in the circular border */
 .home-info .btn-sci .sci a i {
     font-size: 18px;
 }
 
-/* Change the social media icons' appearance on hover */
 .home-info .btn-sci .sci a:hover {
     background: #e07b2e;
     color: #1f242d;
     box-shadow: 0 0 10px #f08e3d;
 }
 
-/* Style the container for the image in the home section */
 .home-img .img-box {
     position: relative;
-    width: 28vw; /* Slightly smaller for mobile */
+    width: 28vw;
     height: 28vw;
-    max-width: 300px; /* Reduced max size */
+    max-width: 300px;
     max-height: 300px;
     border-radius: 50%;
     padding: 5px;
@@ -269,7 +236,6 @@ a {
     overflow: visible;
 }
 
-/* Create a rotating border effect around the image using pseudo-elements */
 .home-img .img-box::before,
 .home-img .img-box::after {
     content: '';
@@ -280,22 +246,18 @@ a {
     border-radius: 50%;
     transform: rotate(0deg);
     animation: rotate-border 10s linear infinite;
-    will-change: transform;
 }
 
-/* Define the animation for rotating the border */
 @keyframes rotate-border {
     100% {
         transform: rotate(360deg);
     }
 }
 
-/* Add a delay to the second rotating border for a layered effect */
 .home-img .img-box::after {
     animation-delay: -5s;
 }
 
-/* Style the inner container for the image */
 .home-img .img-box .img-item {
     position: relative;
     width: 100%;
@@ -309,121 +271,128 @@ a {
     overflow: hidden;
 }
 
-/* Style the image inside the container */
 .home-img .img-box .img-item img {
     position: absolute;
-    top: 25px; /* Adjusted for smaller size */
+    top: 25px;
     display: block;
     width: 85%;
     object-fit: cover;
     mix-blend-mode: lighten;
 }
 
-/* Style the About Me section */
+/* About Me section styles */
 .about-me {
-    padding: 50px 5%; /* Reduced padding for mobile */
+    padding: 50px 5%;
     color: #fff;
-    min-height: auto; /* Allow content to dictate height on mobile */
+    min-height: auto;
 }
 
-/* Style the heading in the About Me section */
 .about-me h2 {
-    font-size: 28px; /* Reduced for mobile */
+    font-size: 28px;
     font-weight: 700;
     text-align: center;
     margin-bottom: 15px;
     position: relative;
 }
 
-/* Add a blue underline to the About Me heading */
 .about-me h2::after {
     content: '';
     position: absolute;
     bottom: -8px;
     left: 50%;
     transform: translateX(-50%);
-    width: 40px; /* Slightly smaller */
+    width: 40px;
     height: 3px;
     background: #007bff;
 }
 
-/* Style the introductory paragraph in the About Me section */
 .about-me .intro {
-    font-size: 16px; /* Reduced for mobile */
+    font-size: 16px;
     text-align: center;
     margin-bottom: 30px;
-    max-width: 100%; /* Full width on mobile */
+    max-width: 100%;
     color: #ddd;
 }
 
-/* Style the grid container for the skill cards */
 .about-me .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Smaller min width for mobile */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 15px;
     margin-bottom: 40px;
 }
 
-/* Style each skill card */
 .about-me .skill-card {
     background: rgba(0, 0, 0, 0.7);
     border-radius: 8px;
     padding: 15px;
     text-align: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Add a hover effect to the skill cards */
 .about-me .skill-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 0 15px #f08e3d;
 }
 
-/* Style the Material Icons in the skill cards */
 .about-me .skill-card span.material-icons,
 .about-me .skill-card span.material-symbols-outlined {
-    font-size: 35px; /* Slightly smaller */
+    font-size: 35px;
     color: #007bff;
     margin-bottom: 10px;
     display: block;
 }
 
-/* Style the heading in each skill card */
 .about-me .skill-card h3 {
-    font-size: 18px; /* Reduced for mobile */
+    font-size: 18px;
     font-weight: 600;
     margin-bottom: 8px;
     color: #fff;
 }
 
-/* Style the paragraph in each skill card */
 .about-me .skill-card p {
-    font-size: 13px; /* Reduced for mobile */
+    font-size: 13px;
     color: #ccc;
 }
 
-/* Style the Technical Skills subsection */
 .technical-skills {
     margin-bottom: 40px;
 }
 
-/* Style the skill list in the technical skills section */
 .technical-skills .skill-list {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-/* Style each skill item in the list */
 .technical-skills .skill-list li {
     position: relative;
-    font-size: 14px; /* Reduced for mobile */
+    font-size: 14px;
     color: #ccc;
     margin-bottom: 8px;
     text-align: center;
 }
 
-/* Style the journey section with flexbox layout */
+.technical-skills .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.technical-skills .skill-card {
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.technical-skills .skill-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #f08e3d;
+}
+
 .about-me .journey {
     display: flex;
     gap: 30px;
@@ -432,20 +401,17 @@ a {
     margin-bottom: 40px;
 }
 
-/* Style the journey image container */
 .about-me .journey-img {
     flex: 1;
-    min-width: 250px; /* Reduced for mobile */
+    min-width: 250px;
 }
 
-/* Style the journey image */
 .about-me .journey-img img {
     width: 100%;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* Style the journey text container */
 .about-me .journey-text {
     flex: 2;
     min-width: 250px;
@@ -455,23 +421,20 @@ a {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* Style the heading in the journey section */
 .about-me .journey-text h3 {
-    font-size: 24px; /* Reduced for mobile */
+    font-size: 24px;
     font-weight: 600;
     margin-bottom: 15px;
     color: #fff;
 }
 
-/* Style the paragraphs in the journey section */
 .about-me .journey-text p {
-    font-size: 14px; /* Reduced for mobile */
+    font-size: 14px;
     color: #ccc;
     margin-bottom: 10px;
     line-height: 1.5;
 }
 
-/* Style the experience stats section */
 .experience-stats {
     display: flex;
     gap: 15px;
@@ -480,35 +443,32 @@ a {
     margin-top: 15px;
 }
 
-/* Style each stat container */
 .experience-stats .stat {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 80px; /* Smaller for mobile */
+    width: 80px;
     height: 80px;
     background: #007bff;
     border-radius: 50%;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* Style the stat value */
 .experience-stats .stat-value {
-    font-size: 20px; /* Reduced for mobile */
+    font-size: 20px;
     font-weight: 600;
     color: #fff;
 }
 
-/* Style the stat label */
 .experience-stats .stat-label {
-    font-size: 10px; /* Reduced for mobile */
+    font-size: 10px;
     color: #fff;
     text-align: center;
     margin-top: 3px;
 }
 
-/* Style the Programming Languages section */
+/* Programming Languages section styles */
 .programming-languages {
     padding: 50px 5%;
     color: #fff;
@@ -518,7 +478,6 @@ a {
     align-items: center;
 }
 
-/* Style the heading in the Programming Languages section */
 .programming-languages h2 {
     font-size: 28px;
     font-weight: 700;
@@ -527,7 +486,6 @@ a {
     position: relative;
 }
 
-/* Add a blue underline to the Programming Languages heading */
 .programming-languages h2::after {
     content: '';
     position: absolute;
@@ -539,7 +497,6 @@ a {
     background: #007bff;
 }
 
-/* Style the introductory paragraph in the Programming Languages section */
 .programming-languages .intro {
     font-size: 16px;
     text-align: center;
@@ -548,7 +505,6 @@ a {
     color: #ddd;
 }
 
-/* Style the container for the languages list */
 .programming-languages .languages-list {
     display: flex;
     gap: 15px;
@@ -556,40 +512,37 @@ a {
     justify-content: center;
 }
 
-/* Style each language button */
 .programming-languages .language {
     background: rgba(0, 0, 0, 0.7);
     padding: 8px 15px;
     border-radius: 15px;
-    font-size: 14px; /* Reduced for mobile */
+    font-size: 14px;
     font-weight: 500;
     color: #fff;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     align-items: center;
     gap: 6px;
 }
 
-/* Add a hover effect to the language buttons */
 .programming-languages .language:hover {
-    transform: translateY(-5px);
+    transform: scale(1.1);
+    box-shadow: 0 0 15px #f08e3d;
 }
 
-/* Style the language icons */
 .programming-languages .language-icon {
-    font-size: 20px; /* Reduced for mobile */
+    font-size: 20px;
     color: #f08e3d;
 }
 
-/* Style the Education & Certifications section */
+/* Education & Certifications section styles */
 .education-certifications {
     padding: 50px 5%;
     color: #fff;
     min-height: auto;
 }
 
-/* Style the heading in the Education & Certifications section */
 .education-certifications h2 {
     font-size: 28px;
     font-weight: 700;
@@ -598,7 +551,6 @@ a {
     position: relative;
 }
 
-/* Add a blue underline to the Education & Certifications heading */
 .education-certifications h2::after {
     content: '';
     position: absolute;
@@ -610,7 +562,6 @@ a {
     background: #007bff;
 }
 
-/* Style the introductory paragraph in the Education & Certifications section */
 .education-certifications .intro {
     font-size: 16px;
     text-align: center;
@@ -619,29 +570,25 @@ a {
     color: #ddd;
 }
 
-/* Style the main content container with flexbox layout */
 .education-certifications .education-content {
     display: flex;
     gap: 30px;
     flex-wrap: wrap;
 }
 
-/* Style the left column (Academic Education and Current Learning) */
 .education-certifications .education-left {
     flex: 1;
-    min-width: 100%; /* Full width on mobile */
+    min-width: 100%;
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-/* Style the right column (Professional Certifications) */
 .education-certifications .education-right {
     flex: 1;
     min-width: 100%;
 }
 
-/* Style the education cards (Academic Education and Current Learning) */
 .education-certifications .education-card {
     background: rgba(0, 0, 0, 0.7);
     padding: 15px;
@@ -650,12 +597,10 @@ a {
     transition: transform 0.3s ease;
 }
 
-/* Add a hover effect to the education cards */
 .education-certifications .education-card:hover {
     transform: translateY(-5px);
 }
 
-/* Style the card header (icon and heading) */
 .education-certifications .card-header {
     display: flex;
     align-items: center;
@@ -663,20 +608,17 @@ a {
     margin-bottom: 10px;
 }
 
-/* Style the Material Icons in the card header */
 .education-certifications .card-header .material-icons {
     font-size: 24px;
     color: #007bff;
 }
 
-/* Style the heading in the card header */
 .education-certifications .card-header h3 {
-    font-size: 20px; /* Reduced for mobile */
+    font-size: 20px;
     font-weight: 600;
     color: #fff;
 }
 
-/* Style the degree title */
 .education-certifications .education-card h4 {
     font-size: 16px;
     font-weight: 500;
@@ -684,28 +626,24 @@ a {
     margin-bottom: 4px;
 }
 
-/* Style the institution name */
 .education-certifications .education-card .institution {
     font-size: 14px;
     color: #ccc;
     margin-bottom: 4px;
 }
 
-/* Style the date */
 .education-certifications .education-card .date {
     font-size: 13px;
     color: #bbb;
     margin-bottom: 8px;
 }
 
-/* Style the description */
 .education-certifications .education-card .description {
     font-size: 13px;
     color: #ccc;
     line-height: 1.5;
 }
 
-/* Style the certifications header (icon and heading) */
 .education-certifications .certifications-header {
     display: flex;
     align-items: center;
@@ -713,57 +651,50 @@ a {
     margin-bottom: 15px;
 }
 
-/* Style the Material Icons in the certifications header */
 .education-certifications .certifications-header .material-icons {
     font-size: 24px;
     color: #007bff;
 }
 
-/* Style the heading in the certifications header */
 .education-certifications .certifications-header h3 {
     font-size: 20px;
     font-weight: 600;
     color: #fff;
 }
 
-/* Style the certifications grid */
 .education-certifications .certifications-grid {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    margin-left: 0; /* Remove indent on mobile */
+    margin-left: 0;
 }
 
-/* Style each certification card */
 .education-certifications .certification-card {
     background: rgba(0, 0, 0, 0.7);
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     align-items: center;
     gap: 10px;
     width: 100%;
 }
 
-/* Add a hover effect to the certification cards */
 .education-certifications .certification-card:hover {
-    transform: translateY(-5px);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #f08e3d;
 }
 
-/* Style the certification icon */
 .education-certifications .certification-icon {
     font-size: 35px;
     color: #28a745;
 }
 
-/* Style the certification text container */
 .education-certifications .certification-card .certification-text {
     flex: 1;
 }
 
-/* Style the certification title */
 .education-certifications .certification-card h4 {
     font-size: 15px;
     font-weight: 500;
@@ -771,20 +702,18 @@ a {
     margin-bottom: 4px;
 }
 
-/* Style the year */
 .education-certifications .certification-card .year {
     font-size: 13px;
     color: #bbb;
     margin-bottom: 4px;
 }
 
-/* Style the institution name in the certification card */
 .education-certifications .certification-card .institution {
     font-size: 13px;
     color: #ccc;
 }
 
-/* Style the Interests section */
+/* Interests section styles */
 .interests {
     padding: 50px 5%;
     color: #fff;
@@ -794,7 +723,6 @@ a {
     align-items: center;
 }
 
-/* Style the heading in the Interests section */
 .interests h2 {
     font-size: 28px;
     font-weight: 700;
@@ -803,7 +731,6 @@ a {
     position: relative;
 }
 
-/* Add a blue underline to the Interests heading */
 .interests h2::after {
     content: '';
     position: absolute;
@@ -815,7 +742,6 @@ a {
     background: #007bff;
 }
 
-/* Style the introductory paragraph in the Interests section */
 .interests .intro {
     font-size: 16px;
     text-align: center;
@@ -824,7 +750,6 @@ a {
     color: #ddd;
 }
 
-/* Style the interests grid */
 .interests .interests-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -833,17 +758,20 @@ a {
     max-width: 100%;
 }
 
-/* Style each interest card */
 .interests .interest-card {
     background: rgba(0, 0, 0, 0.7);
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     text-align: center;
-    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Style the interest icon */
+.interests .interest-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #f08e3d;
+}
+
 .interests .interest-icon {
     font-size: 40px;
     color: #f08e3d;
@@ -851,7 +779,6 @@ a {
     display: block;
 }
 
-/* Style the interest title */
 .interests .interest-card h3 {
     font-size: 18px;
     font-weight: 600;
@@ -859,14 +786,13 @@ a {
     margin-bottom: 8px;
 }
 
-/* Style the description (always visible) */
 .interests .interest-card .description {
     font-size: 13px;
     color: #ccc;
     line-height: 1.5;
 }
 
-/* Style the Projects section */
+/* Projects section styles */
 .projects {
     padding: 50px 5%;
     color: #fff;
@@ -876,7 +802,6 @@ a {
     align-items: center;
 }
 
-/* Style the heading in the Projects section */
 .projects h2 {
     font-size: 28px;
     font-weight: 700;
@@ -885,7 +810,6 @@ a {
     position: relative;
 }
 
-/* Add a blue underline to the Projects heading */
 .projects h2::after {
     content: '';
     position: absolute;
@@ -897,7 +821,6 @@ a {
     background: #007bff;
 }
 
-/* Style the introductory paragraph in the Projects section */
 .projects .intro {
     font-size: 16px;
     text-align: center;
@@ -906,7 +829,6 @@ a {
     color: #ddd;
 }
 
-/* Style the projects grid */
 .projects .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -915,17 +837,20 @@ a {
     max-width: 100%;
 }
 
-/* Style each project card */
 .projects .project-card {
     background: rgba(0, 0, 0, 0.7);
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     text-align: center;
-    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Style the project icon (for developer_mode_tv) */
+.projects .project-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #f08e3d;
+}
+
 .projects .project-icon {
     font-size: 40px;
     color: #f08e3d;
@@ -933,7 +858,6 @@ a {
     display: block;
 }
 
-/* Style the RStudio project icon (for devicon-rstudio-plain) */
 .projects .project-icon-rstudio {
     font-size: 40px;
     color: #32c6eb;
@@ -941,7 +865,6 @@ a {
     display: block;
 }
 
-/* Style the project title */
 .projects .project-card h3 {
     font-size: 18px;
     font-weight: 600;
@@ -949,7 +872,6 @@ a {
     margin-bottom: 8px;
 }
 
-/* Style the description */
 .projects .project-card .description {
     font-size: 13px;
     color: #ccc;
@@ -957,7 +879,6 @@ a {
     margin-bottom: 10px;
 }
 
-/* Style the project link */
 .projects .project-card .project-link {
     display: inline-block;
     font-size: 13px;
@@ -967,12 +888,10 @@ a {
     transition: color 0.3s ease;
 }
 
-/* Hover effect for the project link */
 .projects .project-card .project-link:hover {
     color: #28a745;
 }
 
-/* Style the dashboard example subsection */
 .projects .dashboard-example {
     margin-top: 40px;
     text-align: center;
@@ -980,7 +899,6 @@ a {
     max-width: 100%;
 }
 
-/* Style the dashboard example heading */
 .projects .dashboard-example h3 {
     font-size: 20px;
     font-weight: 600;
@@ -989,7 +907,6 @@ a {
     position: relative;
 }
 
-/* Add a blue underline to the dashboard example heading */
 .projects .dashboard-example h3::after {
     content: '';
     position: absolute;
@@ -1001,7 +918,6 @@ a {
     background: #007bff;
 }
 
-/* Style the dashboard intro paragraph */
 .projects .dashboard-example .dashboard-intro {
     font-size: 14px;
     color: #ddd;
@@ -1011,7 +927,6 @@ a {
     margin-right: auto;
 }
 
-/* Style the container for dashboard images (side by side) */
 .projects .dashboard-example .dashboard-images {
     display: flex;
     justify-content: center;
@@ -1019,16 +934,15 @@ a {
     flex-wrap: wrap;
 }
 
-/* Style each dashboard image */
 .projects .dashboard-example .dashboard-image {
     width: 100%;
-    max-width: 350px; /* Reduced for mobile */
+    max-width: 350px;
     height: auto;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* Style the Contact section */
+/* Contact section styles */
 .contact {
     padding: 50px 5%;
     color: #fff;
@@ -1038,7 +952,6 @@ a {
     align-items: center;
 }
 
-/* Style the heading in the Contact section */
 .contact h2 {
     font-size: 28px;
     font-weight: 700;
@@ -1047,7 +960,6 @@ a {
     position: relative;
 }
 
-/* Add a blue underline to the Contact heading */
 .contact h2::after {
     content: '';
     position: absolute;
@@ -1059,7 +971,6 @@ a {
     background: #007bff;
 }
 
-/* Style the introductory paragraph in the Contact section */
 .contact .intro {
     font-size: 16px;
     text-align: center;
@@ -1068,7 +979,6 @@ a {
     color: #ddd;
 }
 
-/* Style the container for form and details */
 .contact .contact-container {
     display: flex;
     gap: 20px;
@@ -1077,7 +987,6 @@ a {
     margin-bottom: 40px;
 }
 
-/* Style the contact form */
 .contact .contact-form {
     flex: 1;
     background: rgba(0, 0, 0, 0.7);
@@ -1086,7 +995,6 @@ a {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* Style the form heading */
 .contact .contact-form h3 {
     font-size: 20px;
     font-weight: 600;
@@ -1094,20 +1002,17 @@ a {
     color: #fff;
 }
 
-/* Style the form */
 .contact .contact-form form {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-/* Style each form group */
 .contact .contact-form .form-group {
     display: flex;
     flex-direction: column;
 }
 
-/* Style form labels */
 .contact .contact-form label {
     font-size: 13px;
     font-weight: 500;
@@ -1115,7 +1020,6 @@ a {
     color: #ddd;
 }
 
-/* Style form inputs and textarea */
 .contact .contact-form input,
 .contact .contact-form textarea {
     background: rgba(255, 255, 255, 0.1);
@@ -1128,13 +1032,11 @@ a {
     transition: background 0.3s ease;
 }
 
-/* Style textarea specifically */
 .contact .contact-form textarea {
     resize: vertical;
     min-height: 80px;
 }
 
-/* Hover/focus effect for inputs and textarea */
 .contact .contact-form input:hover,
 .contact .contact-form textarea:hover,
 .contact .contact-form input:focus,
@@ -1142,7 +1044,6 @@ a {
     background: rgba(255, 255, 255, 0.2);
 }
 
-/* Style the send button */
 .contact .contact-form .send-btn {
     display: flex;
     align-items: center;
@@ -1158,26 +1059,10 @@ a {
     transition: background 0.3s ease;
 }
 
-/* Hover effect for the send button */
 .contact .contact-form .send-btn:hover {
     background: #28a745;
 }
 
-/* Style the form message */
-.contact .contact-form .form-message {
-    display: none;
-    margin-top: 10px;
-    font-size: 14px;
-    color: #28a745;
-    text-align: center;
-}
-
-/* Show the form message when the URL contains ?success=true */
-:where([href*="#contact?success=true"]) ~ .contact .contact-form .form-message {
-    display: block;
-}
-
-/* Style the contact details */
 .contact .contact-details {
     flex: 1;
     background: rgba(0, 0, 0, 0.7);
@@ -1186,7 +1071,6 @@ a {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* Style the details heading */
 .contact .contact-details h3 {
     font-size: 20px;
     font-weight: 600;
@@ -1194,7 +1078,6 @@ a {
     color: #fff;
 }
 
-/* Style each detail item */
 .contact .contact-details .detail-item {
     display: flex;
     align-items: center;
@@ -1202,29 +1085,15 @@ a {
     margin-bottom: 15px;
 }
 
-/* Style the detail icon (default) */
 .contact .contact-details .detail-icon {
     font-size: 20px;
 }
 
-/* Specific colors for each icon */
-.contact .contact-details .email-icon {
-    color: #007bff;
-}
+.contact .contact-details .email-icon { color: #007bff; }
+.contact .contact-details .phone-icon { color: #ff0000; }
+.contact .contact-details .whatsapp-icon { color: #28a745; }
+.contact .contact-details .location-icon { color: #ffeb3b; }
 
-.contact .contact-details .phone-icon {
-    color: #ff0000;
-}
-
-.contact .contact-details .whatsapp-icon {
-    color: #28a745;
-}
-
-.contact .contact-details .location-icon {
-    color: #ffeb3b;
-}
-
-/* Style the detail text */
 .contact .contact-details h4 {
     font-size: 15px;
     font-weight: 500;
@@ -1238,25 +1107,15 @@ a {
     margin: 0;
 }
 
-/* Style the contact links (email and WhatsApp) */
 .contact .contact-details .contact-link {
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
-.contact .contact-details .email-link {
-    color: #007bff;
-}
+.contact .contact-details .email-link { color: #007bff; }
+.contact .contact-details .whatsapp-link { color: #28a745; }
+.contact .contact-details .contact-link:hover { color: #fff; }
 
-.contact .contact-details .whatsapp-link {
-    color: #28a745;
-}
-
-.contact .contact-details .contact-link:hover {
-    color: #fff;
-}
-
-/* Style the call to action */
 .contact .cta {
     background: #007bff;
     padding: 20px;
@@ -1266,7 +1125,6 @@ a {
     max-width: 100%;
 }
 
-/* Style the CTA heading */
 .contact .cta h3 {
     font-size: 20px;
     font-weight: 600;
@@ -1274,14 +1132,13 @@ a {
     color: #fff;
 }
 
-/* Style the CTA paragraph */
 .contact .cta p {
     font-size: 14px;
     color: #ddd;
     margin-bottom: 15px;
 }
 
-/* Footer Styles */
+/* Footer styles */
 .footer {
     background: linear-gradient(135deg, #1a252f, #2a3a4f);
     color: #fff;
@@ -1289,7 +1146,6 @@ a {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     margin-top: 40px;
     width: 100%;
-    box-sizing: border-box;
 }
 
 .footer-container {
@@ -1297,46 +1153,21 @@ a {
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 20px;
-    max-width: 1200px; /* Added max-width for better desktop alignment */
+    max-width: 1200px;
     margin: 0 auto;
 }
 
-.footer-left,
-.footer-middle,
-.footer-right {
+.footer-left, .footer-middle, .footer-right {
     flex: 1;
-    min-width: 250px; /* Ensure columns don't get too narrow on desktop */
-    text-align: left; /* Align text to the left for desktop */
+    min-width: 250px;
+    text-align: left;
 }
 
-.footer-left h3,
-.footer-middle h3,
-.footer-right h3 {
+.footer-left h3, .footer-middle h3, .footer-right h3 {
     font-size: 18px;
     font-weight: 600;
     margin-bottom: 10px;
     color: #fff;
-    position: relative;
-}
-
-.footer-left h3::after,
-.footer-middle h3::after,
-.footer-right h3::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0; /* Align underline to the left for desktop */
-    width: 30px;
-    height: 2px;
-    background: #007bff;
-    transition: transform 0.3s ease;
-    transform: scaleX(0);
-}
-
-.footer-left h3:hover::after,
-.footer-middle h3:hover::after,
-.footer-right h3:hover::after {
-    transform: scaleX(1);
 }
 
 .footer p {
@@ -1356,7 +1187,6 @@ a {
 
 .footer ul li a {
     color: #fff;
-    text-decoration: none;
     transition: color 0.3s ease;
 }
 
@@ -1367,7 +1197,7 @@ a {
 .social-icons {
     display: flex;
     gap: 8px;
-    justify-content: flex-start; /* Align icons to the left for desktop */
+    justify-content: flex-start;
 }
 
 .social-icons a {
@@ -1384,11 +1214,9 @@ a {
     display: inline-block;
     background: #007bff;
     color: #fff;
-    border: none;
     padding: 6px 12px;
     border-radius: 4px;
     font-size: 13px;
-    text-decoration: none;
     transition: background 0.3s ease;
     margin-top: 10px;
 }
@@ -1399,7 +1227,7 @@ a {
 
 .footer-bottom {
     display: flex;
-    justify-content: space-between; /* Align copyright and back-to-top button on desktop */
+    justify-content: space-between;
     align-items: center;
     margin-top: 15px;
     padding-top: 15px;
@@ -1415,11 +1243,9 @@ a {
 .back-to-top {
     background: #007bff;
     color: #fff;
-    border: none;
     padding: 6px 10px;
     border-radius: 50%;
     font-size: 14px;
-    text-decoration: none;
     transition: background 0.3s ease;
 }
 
@@ -1427,14 +1253,14 @@ a {
     background: #28a745;
 }
 
-/* Mobile Responsive Styles */
-@media (max-width: 768px) {
-    /* Show the hamburger menu on mobile */
+/* Responsive Styles */
+
+/* Very small screens (below 480px) */
+@media (max-width: 480px) {
     .nav-toggle-label {
         display: flex;
     }
 
-    /* Hide the navigation menu by default on mobile */
     .navbar ul {
         position: fixed;
         top: 0;
@@ -1449,12 +1275,10 @@ a {
         z-index: 100;
     }
 
-    /* Show the menu when the checkbox is checked */
     .nav-toggle:checked ~ ul {
         left: 0;
     }
 
-    /* Style the menu items on mobile */
     .navbar ul li {
         margin: 20px 0;
     }
@@ -1463,7 +1287,6 @@ a {
         font-size: 20px;
     }
 
-    /* Transform the hamburger icon into a cross when menu is open */
     .nav-toggle:checked ~ .nav-toggle-label span:nth-child(1) {
         transform: rotate(45deg) translate(5px, 5px);
     }
@@ -1476,150 +1299,108 @@ a {
         transform: rotate(-45deg) translate(7px, -7px);
     }
 
-    /* Stack the home section vertically on mobile */
     .home {
         flex-direction: column;
         text-align: center;
-        padding-top: 100px; /* Extra padding to account for fixed navbar */
+        padding-top: 100px;
         gap: 20px;
     }
 
-    .home-info h1 {
-        font-size: 32px;
+    .home-info h1 { font-size: 28px; }
+    .home-info h2 { font-size: 18px; }
+    .home-info p { font-size: 12px; }
+    .btn { padding: 6px 20px; font-size: 13px; }
+    .home-info .btn-sci .sci a { padding: 5px; font-size: 16px; }
+    .home-info .btn-sci .sci a i { font-size: 16px; }
+    .home-img .img-box { width: 50vw; height: 50vw; max-width: 250px; max-height: 250px; }
+
+    .about-me h2, .programming-languages h2, .education-certifications h2,
+    .interests h2, .projects h2, .contact h2 { font-size: 24px; }
+
+    .about-me .intro, .programming-languages .intro, .education-certifications .intro,
+    .interests .intro, .projects .intro, .contact .intro { font-size: 14px; }
+
+    .about-me .journey { flex-direction: column; gap: 20px; }
+    .about-me .journey-text h3, .contact .contact-form h3, .contact .contact-details h3,
+    .projects .dashboard-example h3, .contact .cta h3 { font-size: 18px; }
+
+    .contact .contact-container { flex-direction: column; }
+    .contact .contact-form, .contact .contact-details { width: 100%; }
+
+    .projects .dashboard-example .dashboard-images { flex-direction: column; align-items: center; }
+    .projects .dashboard-example .dashboard-image { max-width: 100%; }
+
+    .footer-container { flex-direction: column; text-align: center; }
+    .footer-left, .footer-middle, .footer-right { min-width: 100%; text-align: center; }
+    .social-icons { justify-content: center; margin-top: 8px; }
+    .cv-btn { margin: 10px auto 0; display: block; }
+    .footer-bottom { flex-direction: column; gap: 8px; }
+    .back-to-top { margin: 8px 0 0; }
+}
+
+/* Tablet screens (481px to 1024px) */
+@media (min-width: 481px) and (max-width: 1024px) {
+    .nav-toggle-label {
+        display: flex;
     }
 
-    .home-info h2 {
+    .navbar ul {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 50%;
+        height: 100vh;
+        background: #2e3c49;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: left 0.3s ease;
+        z-index: 100;
+    }
+
+    .nav-toggle:checked ~ ul {
+        left: 0;
+    }
+
+    .navbar ul li {
+        margin: 25px 0;
+    }
+
+    .navbar ul li a {
         font-size: 20px;
     }
 
-    .home-info p {
-        font-size: 13px;
+    .nav-toggle:checked ~ .nav-toggle-label span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
     }
 
-    .home-img .img-box {
-        width: 50vw;
-        height: 50vw;
-        max-width: 250px;
-        max-height: 250px;
+    .nav-toggle:checked ~ .nav-toggle-label span:nth-child(2) {
+        opacity: 0;
     }
 
-    /* Stack journey section vertically */
-    .about-me .journey {
+    .nav-toggle:checked ~ .nav-toggle-label span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+    }
+
+    .home {
         flex-direction: column;
-        gap: 20px;
+        text-align: center;
+        padding-top: 120px;
+        gap: 25px;
     }
 
-    /* Stack contact container vertically */
-    .contact .contact-container {
-        flex-direction: column;
-    }
+    .home-info h1 { font-size: 36px; }
+    .home-info h2 { font-size: 20px; }
+    .home-info p { font-size: 13px; }
+    .home-img .img-box { width: 40vw; height: 40vw; max-width: 280px; max-height: 280px; }
 
-    .contact .contact-form,
-    .contact .contact-details {
-        width: 100%;
-    }
-
-    /* Stack dashboard images vertically */
-    .projects .dashboard-example .dashboard-images {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .projects .dashboard-example .dashboard-image {
-        max-width: 100%;
-    }
-
-    /* Footer adjustments for mobile */
-    .footer-container {
-        flex-direction: column;
-        text-align: center; /* Center align text for mobile */
-    }
-
-    .footer-left,
-    .footer-middle,
-    .footer-right {
-        min-width: 100%; /* Full width on mobile */
-        text-align: center; /* Center align text for mobile */
-    }
-
-    .footer-left h3::after,
-    .footer-middle h3::after,
-    .footer-right h3::after {
-        left: 50%; /* Center the underline for mobile */
-        transform: translateX(-50%);
-    }
-
-    .social-icons {
-        justify-content: center; /* Center icons for mobile */
-        margin-top: 8px;
-    }
-
-    .cv-btn {
-        margin: 10px auto 0;
-        display: block;
-    }
-
-    .footer-bottom {
-        flex-direction: column; /* Stack copyright and back-to-top button vertically */
-        gap: 8px;
-    }
-
-    .back-to-top {
-        margin: 8px 0 0;
-    }
+    .about-me .journey { flex-direction: column; gap: 25px; }
+    .contact .contact-container { flex-direction: column; }
+    .projects .dashboard-example .dashboard-images { gap: 15px; }
 }
 
-/* For very small screens (e.g., below 480px) */
-@media (max-width: 480px) {
-    .home-info h1 {
-        font-size: 28px;
-    }
-
-    .home-info h2 {
-        font-size: 18px;
-    }
-
-    .home-info p {
-        font-size: 12px;
-    }
-
-    .btn {
-        padding: 6px 20px;
-        font-size: 13px;
-    }
-
-    .home-info .btn-sci .sci a {
-        padding: 5px;
-        font-size: 16px;
-    }
-
-    .home-info .btn-sci .sci a i {
-        font-size: 16px;
-    }
-
-    .about-me h2,
-    .programming-languages h2,
-    .education-certifications h2,
-    .interests h2,
-    .projects h2,
-    .contact h2 {
-        font-size: 24px;
-    }
-
-    .about-me .intro,
-    .programming-languages .intro,
-    .education-certifications .intro,
-    .interests .intro,
-    .projects .intro,
-    .contact .intro {
-        font-size: 14px;
-    }
-
-    .about-me .journey-text h3,
-    .contact .contact-form h3,
-    .contact .contact-details h3,
-    .projects .dashboard-example h3,
-    .contact .cta h3 {
-        font-size: 18px;
-    }
+/* Desktop screens (above 1024px) */
+@media (min-width: 1025px) {
+    .nav-toggle-label { display: none; }
+    .navbar ul { position: static; width: auto; height: auto; background: none; }
 }
